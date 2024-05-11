@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="在 Windows 下最快速体验 ArchLinux——Windows Terminal+ArchWSL">
+<title>在 Windows 下最快速体验 ArchLinux——Windows Terminal+ArchWSL</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">在 Windows 下最快速体验 ArchLinux——Windows Terminal+ArchWSL</h1>
+<div class="title-right">
+    <a href="https://breathiness.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/breathiness/breathiness.github.io/issues/6" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131866961-5228f62b-bec4-481c-abc6-e0d7155900a8.jpg"><img src="https://user-images.githubusercontent.com/11361630/131866961-5228f62b-bec4-481c-abc6-e0d7155900a8.jpg" alt="524c56c35b5356205fa51c1c5c005052" style="max-width: 100%;"></a></p>
+<h2>前言</h2>
+<p>当 Windows 系统用户想要体验一下 Linux 系统，或者只需要使用 Linux 系统下的某几个应用时你会如何选择？<br>
+是使用双系统？虚拟机？还是使用服务器？<br>
+这几种方法显然都有一些不方便的地方。<br>
+双系统可以带来完整的 Linux 体验，但是安装有些复杂，且切换系统需要重启电脑。比较麻烦。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131867122-d34e1b61-7a19-46bd-9c3d-95837fbf7f6c.jpg"><img src="https://user-images.githubusercontent.com/11361630/131867122-d34e1b61-7a19-46bd-9c3d-95837fbf7f6c.jpg" alt="a104e425ac027ec5292ce25aa4d12e91" style="max-width: 100%;"></a></p>
+<p>虚拟机同样能有完整的 Linux 体验，切换系统也比较方便。安装虽然比双系统简单，但是也同样需要比较多的步骤。</p>
+<p>服务器虽然使用方便快捷，用法多样。但是仅支持纯命令行，并且要钱。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870023-8e4a412b-bb23-4345-a266-30c38b213971.png"><img src="https://user-images.githubusercontent.com/11361630/131870023-8e4a412b-bb23-4345-a266-30c38b213971.png" alt="69286ca999d67bde3e1148b1320e9f73" style="max-width: 100%;"></a></p>
+<p>这些上手 Linux 的初期投入容易让人萌生退意。<br>
+而 Windows10 系统自带的 WSL。就是非常方便的体验 Linux 系统的方法。基本可以做到开箱即用。<br>
+只需要在功能页面打开 WSL，然后在商店下载需要的发行版即可。<br>
+如果不使用商店也可以直接下载安装包。</p>
+<p><a href="https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#downloading-distros" rel="nofollow">https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#downloading-distros</a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870106-f3804f94-6481-489a-8d13-51a2fe44e182.png"><img src="https://user-images.githubusercontent.com/11361630/131870106-f3804f94-6481-489a-8d13-51a2fe44e182.png" alt="f5491367e8228b76b7d2af14e966ac7f" style="max-width: 100%;"></a></p>
+<p>但是我这里并不打算使用这种方式安装。这里主要有两个问题。</p>
+<ol>
+<li>官方商店里的 Linux 发行版数量不多。而且缺少了我常用的 ArchLinux</li>
+<li>在国内的网络情况，微软的下载速度很微妙。</li>
+</ol>
+<p>为了解决这些问题，我使用的方案是使用 Windows Terminal+ArchWSL</p>
+<h2>安装</h2>
+<h3>ArchWSL 安装</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870192-d0d71367-0483-43b2-8022-fc13bb6ec2d4.png"><img src="https://user-images.githubusercontent.com/11361630/131870192-d0d71367-0483-43b2-8022-fc13bb6ec2d4.png" alt="10a8fb29432dcf2e66da580c70789770" style="max-width: 100%;"></a></p>
+<p>安装(with zip package)<br>
+进入 ArchWSL GitHub 页面，进入发布页面。</p>
+<p>Releases · yuk7/ArchWSL · GitHub<br>
+<a href="https://github.com/yuk7/ArchWSL/releases">https://github.com/yuk7/ArchWSL/releases</a></p>
+<p>选择下载压缩包。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870273-20d411bd-ae34-4e5b-91e3-1a054546ee68.png"><img src="https://user-images.githubusercontent.com/11361630/131870273-20d411bd-ae34-4e5b-91e3-1a054546ee68.png" alt="8747a627bbf2a966d0c9df6e6cb203bc" style="max-width: 100%;"></a></p>
+<p>然后解压，打开 arch.exe 即可安装完成。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870322-e94e8a1a-4a18-4195-b03f-66521edc4ada.jpg"><img src="https://user-images.githubusercontent.com/11361630/131870322-e94e8a1a-4a18-4195-b03f-66521edc4ada.jpg" alt="f6dd1a0b5ae83be5e8e150bc026c2d87" style="max-width: 100%;"></a></p>
+<p>安装完成后的配置我在后续应该会再出个教程。</p>
+<h3>Windows Terminal 安装</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870408-48b91d5f-0278-4001-8a70-26dbfc2f362b.png"><img src="https://user-images.githubusercontent.com/11361630/131870408-48b91d5f-0278-4001-8a70-26dbfc2f362b.png" alt="e6d8df14189f531d5a785cd73fa53743" style="max-width: 100%;"></a></p>
+<p>如果你只需要体验 Linux 系统。安装好 ArchWSL 就足够了。但是，我想要让使用过程更加舒服一些。所以我选择的是微软官方开源的终端模拟器。</p>
+<p>在 GitHub 发布页面下载，双击打开即可安装。</p>
+<p><a href="https://github.com/microsoft/terminal/releases">https://github.com/microsoft/terminal/releases</a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870474-65c5201a-c0f2-4aee-89da-717b703b55a1.png"><img src="https://user-images.githubusercontent.com/11361630/131870474-65c5201a-c0f2-4aee-89da-717b703b55a1.png" alt="3a937c30bfa3fd36ae45c9148597cd1d" style="max-width: 100%;"></a></p>
+<p>打开后可以在上方选择到 ArchWSL，就能进入 Arch 系统了。<br>
+更加详细的介绍可以查看少数派的这篇文章。</p>
+<p>新生代 Windows 终端：Windows Terminal 的全面自定义<br>
+<a href="https://sspai.com/post/59380" rel="nofollow">https://sspai.com/post/59380</a></p>
+<p>在配置过程中，我与文章里不同的地方在于我没有使用 quicker 右键菜单我是直接修改的注册表。</p>
+<h2>ArchWSL 常见问题</h2>
+<h3>移动位置后打开会出现闪退现象</h3>
+<p>虽然看起来 ArchWSL 是绿色软件，但实际上如果你移动 ArchWSL 的路径后是无法继续使用的。<br>
+解决方法(机翻):<br>
+通常，您不能移动已安装的文件夹，因为WSL实例使用注册表项。<br>
+请卸载并重新安装。<br>
+1.运行wslconfig / u Arch命令来卸载实例。<br>
+2.删除rootfs和temp文件夹。<br>
+3.重新安装。</p>
+<p>或操纵注册表项以更改路径。(HKCU\Software\Microsoft\Windows\CurrentVersion\Lxss{LxUID})</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131870688-1d73ad0a-c1ba-4c89-8c69-7329aa4446c2.png"><img src="https://user-images.githubusercontent.com/11361630/131870688-1d73ad0a-c1ba-4c89-8c69-7329aa4446c2.png" alt="43c167d6ad9f0965fafa2984a0708cb8" style="max-width: 100%;"></a></p>
+<h3>pacman 无法安装软件</h3>
+<p>要安装软件之前还需要运行以下命令，进行初始化 keyring</p>
+<p>sudo pacman-key --init<br>
+sudo pacman-key --populate</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://breathiness.github.io"> Blog Title </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","breathiness/breathiness.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+
+</html>

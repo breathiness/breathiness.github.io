@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="在网页端使用 VScode 编辑 GitHub 项目——github.dev">
+<title>在网页端使用 VScode 编辑 GitHub 项目——github.dev</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">在网页端使用 VScode 编辑 GitHub 项目——github.dev</h1>
+<div class="title-right">
+    <a href="https://breathiness.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/breathiness/breathiness.github.io/issues/8" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/github.dev-%E9%A2%98%E5%9B%BE.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/github.dev-%E9%A2%98%E5%9B%BE.png" alt="github.dev-题图" style="max-width: 100%;"></a></p>
+<p>[TOC]</p>
+<h2>简介</h2>
+<p>通常我在网页端查看代码时，会用到 <a href="https://github.com/conwnet/github1s">github1s</a> 这个项目。<br>
+这个项目可以通过在项目 URL 的 <code class="notranslate">GitHub</code> 后面 +1s 来快速打开在线版的 VScode .</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/conwnet/github1s/master/resources/images/vs-code-github1s.png"><img src="https://raw.githubusercontent.com/conwnet/github1s/master/resources/images/vs-code-github1s.png" alt="VS Code - GitHub1s" style="max-width: 100%;"></a></p>
+<p>但是这种方式打开的 VScode 只能用于阅读源码。并且不能添加扩展。<br>
+那么有没有一种方式可以直接编辑代码、支持添加扩展呢？</p>
+<p>答案是有的，而且这还是 GitHub 官方推出的功能。<br>
+那就是 GitHub.dev 项目。</p>
+<ul>
+<li><a href="https://github.com/github/dev">https://github.com/github/dev</a></li>
+</ul>
+<blockquote>
+<p>在任何存储库或拉取请求上按 <code class="notranslate">.</code> 键，或者将 URL 中的 <code class="notranslate">.com</code> 替换为 <code class="notranslate">.dev</code>，以直接进入浏览器中的 VS Code 环境。</p>
+<p>这是一种编辑和导航代码的快捷方式。 如果您想一次编辑多个文件或在进行快速更改时利用 Visual Studio Code 的所有强大的代码编辑功能，它尤其有用。 有关更多信息，请参阅我们的 <a href="https://docs.github.com/en/codespaces/developing-in-codespaces/web-based-editor">文档</a> 。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/856858/130119109-4769f2d7-9027-4bc4-a38c-10f297499e8f.gif"><img src="https://user-images.githubusercontent.com/856858/130119109-4769f2d7-9027-4bc4-a38c-10f297499e8f.gif" alt="github.dev-简易使用" style="max-width: 100%;"></a></p>
+</blockquote>
+<p>在  <code class="notranslate">github/dev</code> 这个项目的第一次提交时间是 2021年8月20日 但是似乎并没有什么文章介绍。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E4%B8%8A%E7%BA%BF%E6%97%B6%E9%97%B4.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E4%B8%8A%E7%BA%BF%E6%97%B6%E9%97%B4.png" alt="GitHub.dev-上线时间" style="max-width: 100%;"></a></p>
+<p>我找到这个功能还是在 codespaces 的介绍页面下方看到的一句话介绍。这个功能藏得还挺深的。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/codespace-github.dev%20%E4%BB%8B%E7%BB%8D.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/codespace-github.dev%20%E4%BB%8B%E7%BB%8D.png" alt="codespace-github.dev 介绍" style="max-width: 100%;"></a></p>
+<h3>快速打开</h3>
+<p>使用方式前面也已经提到了，直接在对应项目页面按 <code class="notranslate">.</code> 键即可。<br>
+但是我在浏览器上是习惯使用 Surfingkeys 扩展（为浏览器添加 VIM 快捷键）。<code class="notranslate">.</code> 键已经被分配给了“重复最近一次操作”功能。</p>
+<p>虽然也可以直接在地址栏修改 <code class="notranslate">.com</code> 替换为 <code class="notranslate">.dev</code> 来进入。但是我还是选择了另外一种方式。<br>
+使用油猴脚本增加按钮。</p>
+<p><a href="https://greasyfork.org/zh-CN/scripts/431463-%E6%98%BE%E7%A4%BA-github-dev-%E6%8C%89%E9%92%AE" rel="nofollow">显示 Github.dev 按钮</a></p>
+<blockquote>
+<p>在 Github 网站顶部显示 Github.dev 按钮，Github.dev 是一个利用 VsCode Online 浏览代码的项目</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC.png" alt="显示 Github.dev 按钮" style="max-width: 100%;"></a></p>
+<p>安装完成，刷新页面后即可在项目上方看到 Github.dev 按钮。</p>
+<h2>使用体验</h2>
+<p>进入网页版 VScode 后，操作方式与桌面版并无太大差别。你可以使用习惯的方式进行文件的编辑。<br>
+但是网页版还是会有一些差距的。下面简单介绍一下差异的地方。</p>
+<h3>设置同步</h3>
+<p>不知道是不是 BUG 虽然点击下面的同步选项可以弹出设置，但其实并不能同步桌面版的设置。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E8%AE%BE%E7%BD%AE%E5%90%8C%E6%AD%A5.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E8%AE%BE%E7%BD%AE%E5%90%8C%E6%AD%A5.png" alt="GitHub.dev-设置同步" style="max-width: 100%;"></a></p>
+<p>网页版是另外保存的一套设置。其他设备进入之后会自动同步。</p>
+<h3>自动保存</h3>
+<p>相比起桌面版 VScode，网页版可能是考虑到网络问题，在文件修改之后会立刻进行自动保存。不会出现代表 <code class="notranslate">未保存</code> 的小白点。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/github.dev-%E6%A1%8C%E9%9D%A2%E7%89%88%E4%BF%9D%E5%AD%98.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/github.dev-%E6%A1%8C%E9%9D%A2%E7%89%88%E4%BF%9D%E5%AD%98.png" alt="github.dev-桌面版保存" style="max-width: 100%;"></a></p>
+<h3>无需 pull</h3>
+<p>提交 <code class="notranslate">commit</code> 之后无需 <code class="notranslate">push</code> 操作类似于编辑本地仓库。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9%E5%90%8E%E8%87%AA%E5%8A%A8%E4%BF%9D%E5%AD%98.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9%E5%90%8E%E8%87%AA%E5%8A%A8%E4%BF%9D%E5%AD%98.png" alt="GitHub.dev-修改内容后自动保存" style="max-width: 100%;"></a></p>
+<h3>新增 issues</h3>
+<p>可以直接在 VScode 内新建 issues。<br>
+最上方一行是 issues 的标题；<br>
+第二行是受让人；<br>
+第三行是标签；</p>
+<p>后面的就是正文部分了；</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E6%B7%BB%E5%8A%A0%20issue.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E6%B7%BB%E5%8A%A0%20issue.png" alt="GitHub.dev-添加 issues" style="max-width: 100%;"></a></p>
+<p>填写完成后点击右上角的 <code class="notranslate">√</code> 即可完成创建。</p>
+<p>不过只能进行新建操作。并不能进行现有 issues 的编辑。确实非常可惜。</p>
+<h3>多平台支持</h3>
+<p>用网页版可以带来的优势就是可以在任何有现代浏览器的设备上使用。<br>
+当然，在手机设备上的屏幕限制如果不使用桌面模式，基本是无法正常使用的。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/github.dev-%E6%89%8B%E6%9C%BA%E4%BD%BF%E7%94%A8.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/github.dev-%E6%89%8B%E6%9C%BA%E4%BD%BF%E7%94%A8.png" alt="github.dev-手机使用" style="max-width: 100%;"></a></p>
+<h3>支持部分扩展</h3>
+<p>网页版 VScode 也可以添加扩展，并且也可以同步。<br>
+但是并不是所有扩展都可以安装</p>
+<p>在扩展页面，暗色的扩展都是不支持安装的。而且在支持的那些扩展中也有一些带有感叹号的，这些在功能上会有部分限制。<br>
+比如说 markdownlint 这个扩展就限制无法修改配置文件。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E4%B8%8D%E6%94%AF%E6%8C%81%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/GitHub.dev-%E4%B8%8D%E6%94%AF%E6%8C%81%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6.png" alt="GitHub.dev-不支持部分扩展" style="max-width: 100%;"></a></p>
+<p>而最离谱的是连语言包扩展都不支持。只能用英文版。</p>
+<h2>总结</h2>
+<p>虽然 github.dev 目前还有各种各样的问题。依然比不上桌面端 VScode 的强大功能，但是总体来说还是非常好用的。<br>
+使用方便、无需部署、无需付费、支持编辑文件、支持部分扩展……<br>
+已经有非常充足的理由让人去使用了。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://breathiness.github.io"> Blog Title </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","breathiness/breathiness.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="在Linux上也能使用的人声歌唱软件——Synthesizer V">
+<title>在Linux上也能使用的人声歌唱软件——Synthesizer V</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">在Linux上也能使用的人声歌唱软件——Synthesizer V</h1>
+<div class="title-right">
+    <a href="https://breathiness.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/breathiness/breathiness.github.io/issues/3" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131871852-319615bb-f591-4910-9d21-c9e9be1a0ae5.jpg"><img src="https://user-images.githubusercontent.com/11361630/131871852-319615bb-f591-4910-9d21-c9e9be1a0ae5.jpg" alt="7034ee2751c49341fc427c4122473607" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>Synthesizer V（简称 Synth V）是由以华侃如（Kanru Hua，sleepwalking）为首的 Dreamtonics Co,. Ltd. 团队开发的电子音声合成引擎（V 表示第五代）。该引擎采用了自主研发的基于人工神经网络及拼接合成算法的 LLSM （底层语音模型） 技术，仅使用少量采样数据即能生成自然的声音。</p>
+<p align="right">——<a href="https://zh.moegirl.org/Synthesizer_V" rel="nofollow">萌娘百科 Synthesizer V 条目</a> </p>
+</blockquote>
+
+
+<ul>
+<li><a href="#%E9%9B%B6-%E5%89%8D%E8%A8%80">零、前言</a></li>
+<li><a href="#%E4%B8%80-%E5%AE%89%E8%A3%85">一、安装</a>
+<ul>
+<li><a href="#1-synthesizer-v-%E7%BC%96%E8%BE%91%E5%99%A8">1. Synthesizer V 编辑器</a>
+<ul>
+<li><a href="#11-%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">1.1 下载地址</a></li>
+<li><a href="#12-%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E">1.2 安装说明</a>
+<ul>
+<li><a href="#121-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE%E6%96%B9%E5%BC%8F">1.2.1 图形界面设置方式</a></li>
+<li><a href="#122-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%BE%E7%BD%AE%E6%96%B9%E5%BC%8F">1.2.2 命令行设置方式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-%E5%A3%B0%E5%BA%93">2. 声库</a>
+<ul>
+<li><a href="#21-%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">2.1 下载地址</a></li>
+<li><a href="#22-%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E">2.2 安装说明</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E9%85%8D%E7%BD%AE">二、配置</a>
+<ul>
+<li><a href="#1-%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E6%89%93%E5%BC%80%E7%A8%8B%E5%BA%8F">1. 设置快捷打开程序</a></li>
+<li><a href="#2-%E8%AE%BE%E7%BD%AE%E4%B8%AD%E6%96%87%E7%95%8C%E9%9D%A2">2. 设置中文界面</a></li>
+<li><a href="#3-%E6%95%B0%E4%BD%8D%E9%9F%B3%E9%A2%91%E5%B7%A5%E4%BD%9C%E7%AB%99daw%E6%8C%82%E8%BD%BD-vsti-%E6%8F%92%E4%BB%B6">3. 数位音频工作站（DAW）挂载 VSTi 插件</a>
+<ul>
+<li><a href="#31-%E5%A4%8D%E5%88%B6-vsti-%E6%96%87%E4%BB%B6%E8%87%B3%E7%9B%B8%E5%BA%94%E8%B7%AF%E5%BE%84">3.1 复制 VSTi 文件至相应路径</a></li>
+<li><a href="#32-%E5%AE%BF%E4%B8%BB%E7%AB%AF%E8%AE%BE%E7%BD%AE">3.2 宿主端设置</a></li>
+<li><a href="#33-synthv-%E8%BF%9E%E6%8E%A5%E8%AE%BE%E7%BD%AE">3.3 SynthV 连接设置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E4%BD%BF%E7%94%A8">三、使用</a>
+<ul>
+<li><a href="#1-%E5%AF%BC%E5%85%A5%E4%BC%B4%E5%A5%8F">1. 导入伴奏</a></li>
+<li><a href="#2-%E7%BB%98%E5%88%B6%E9%9F%B3%E7%AC%A6">2. 绘制音符</a></li>
+<li><a href="#3-%E8%BE%93%E5%85%A5%E6%AD%8C%E8%AF%8D">3. 输入歌词</a></li>
+<li><a href="#3-%E5%AF%BC%E5%87%BA">3. 导出</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E9%A2%84%E5%91%8A">四、预告</a></li>
+</ul>
+
+<h1>零、前言</h1>
+<p>本文使用Markdown格式写作完成，其他平台格式可能会有错误。推荐在博客查看。<br>
+<a href="https://breathiness.github.io/#/posts/3" rel="nofollow">个人博客链接</a><br>
+昨天我们刚刚<del>攻略了大书库</del>更新了 ZSH 简介。<br>
+这期稍就微偏离一下预订的轨迹，跳过美化篇。直接进入音乐制作篇。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/abd4a516539750d6e7afffcb58dd646b8bf64e68f73ef2f886b536a3d4b366cf/68747470733a2f2f696d672e6d6f656769726c2e6f72672f636f6d6d6f6e2f392f39652f2545372539432539462545362539312542382545392542312542432e676966"><img src="https://camo.githubusercontent.com/abd4a516539750d6e7afffcb58dd646b8bf64e68f73ef2f886b536a3d4b366cf/68747470733a2f2f696d672e6d6f656769726c2e6f72672f636f6d6d6f6e2f392f39652f2545372539432539462545362539312542382545392542312542432e676966" alt="" data-canonical-src="https://img.moegirl.org/common/9/9e/%E7%9C%9F%E6%91%B8%E9%B1%BC.gif" style="max-width: 100%;"></a></p>
+<p>让我来介绍一下，如何在 Linux 系统内使用虚拟歌姬。</p>
+<p>想必大家或多或少都有听说过初音未来、洛天依等虚拟歌手。她们那略带机械感的人声给人留下了非常深刻的印象。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1741fcf385e4fe9b0aca3ac0de7e44d25611b072f0c77ac6d642d3b55ea7c120/68747470733a2f2f696d672e6d6f656769726c2e6f72672f636f6d6d6f6e2f382f38392f48617473756e652e4d696b752e66756c6c2e323032303133302e6a7067"><img src="https://camo.githubusercontent.com/1741fcf385e4fe9b0aca3ac0de7e44d25611b072f0c77ac6d642d3b55ea7c120/68747470733a2f2f696d672e6d6f656769726c2e6f72672f636f6d6d6f6e2f382f38392f48617473756e652e4d696b752e66756c6c2e323032303133302e6a7067" alt="enter image description here" data-canonical-src="https://img.moegirl.org/common/8/89/Hatsune.Miku.full.2020130.jpg" style="max-width: 100%;"></a><br>
+她们的声音是通过一款名为 VOCALOID <del>术力口</del> 的人声歌唱软件。制作而成。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/131871965-2262a841-3f98-4f72-95fb-6594a4dea987.jpg"><img src="https://user-images.githubusercontent.com/11361630/131871965-2262a841-3f98-4f72-95fb-6594a4dea987.jpg" alt="5b9aeafeaa006ee6c1121297b048bac5" style="max-width: 100%;"></a></p>
+<blockquote>
+<p><del>顺带一提，我的 ID 的由来就是 VOCALOID 的十参中的呼吸声。</del><br>
+<del>呼吸声（BRE、Breathiness）</del><br>
+<del>数值越高，气声则会越大。</del></p>
+</blockquote>
+<p>然而很遗憾的是，主流的人声歌唱软件 VOCALOID、UTAU、CeVIO 等并没有 Linux 版本。我在很长一段时间都是靠虚拟机来使用相关的软件。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a7ffdc69951411f607e6d83f4cafc8e905fa4420b21627bbcadbb0866f76489f/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f33663439616a6955525854465a75712e706e67"><img src="https://camo.githubusercontent.com/a7ffdc69951411f607e6d83f4cafc8e905fa4420b21627bbcadbb0866f76489f/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f33663439616a6955525854465a75712e706e67" alt="utau-nolinux" data-canonical-src="https://i.loli.net/2019/12/29/3f49ajiURXTFZuq.png" style="max-width: 100%;"></a><br>
+但偶然间我在查找闇音レンリ的资料时，发现了一款名为 Synthesizer V 的软件。<br>
+看了一下相关的视频，声音很自然。即使是无参也有非常不错的效果。确实有点强。<br>
+然后在下载界面非常惊讶地看到居然有 Linux 版本。<br>
+于是我就下载试用了一段时间，体验还挺不错。</p>
+<p>关于各引擎间的差别，可以看看 B 站的这篇专栏。<br>
+《【科普】SynthV 和 VOCALOID 和 UTAU 到底有何不同？（字数较多请注意）》<br>
+<a href="https://www.bilibili.com/read/cv3594471" rel="nofollow">https://www.bilibili.com/read/cv3594471</a></p>
+<h1>一、安装</h1>
+<p>在 Synthesizer V 官网的下载界面即可下载到 Synthesizer V 编辑器以及三个免费声库的安装包。</p>
+<h2>1. Synthesizer V 编辑器</h2>
+<h3>1.1 下载地址</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/be377b8f5dbf9cde31b07425b3ae58e94ab1741946c92e4cbdf0ee2db4dab43c/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f6475417a364435677934714a6372732e706e67"><img src="https://camo.githubusercontent.com/be377b8f5dbf9cde31b07425b3ae58e94ab1741946c92e4cbdf0ee2db4dab43c/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f6475417a364435677934714a6372732e706e67" alt="" data-canonical-src="https://i.loli.net/2019/12/23/duAz6D5gy4qJcrs.png" style="max-width: 100%;"></a></p>
+<p>Windows (28 MB)<br>
+<a href="https://synthv-download.oss-cn-hangzhou.aliyuncs.com/synthv-setup.exe" rel="nofollow"><img src="https://camo.githubusercontent.com/1883f60aadd29273e46505ef46443ff1c6870d38eec7dbbcd486b196c14500be/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f57696e646f77732d2545342542382538422545382542442542442545352538352538442545382542342542392545382541462539352545372539342541382d2532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d77696e646f7773" alt="Windows 下载免费试用" data-canonical-src="https://img.shields.io/badge/Windows-%E4%B8%8B%E8%BD%BD%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8-%2315E879?style=for-the-badge&amp;logo=windows" style="max-width: 100%;"></a></p>
+<p>Linux 64-bit (33 MB)<br>
+<a href="https://synthv-download.oss-cn-hangzhou.aliyuncs.com/synthv-editor.zip" rel="nofollow"><img src="https://camo.githubusercontent.com/10a7d01965d884e5a2f7ecb8ca2a8f124d606b86393d6e39b48f06bda86f3846/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c696e75782d2545342542382538422545382542442542442545352538352538442545382542342542392545382541462539352545372539342541382d2532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e7578" alt="Linux 下载免费试用" data-canonical-src="https://img.shields.io/badge/linux-%E4%B8%8B%E8%BD%BD%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8-%2315E879?style=for-the-badge&amp;logo=linux" style="max-width: 100%;"></a></p>
+<p>macOS (21 MB)<br>
+<a href="https://synthv-download.oss-cn-hangzhou.aliyuncs.com/synthv-setup.pkg" rel="nofollow"><img src="https://camo.githubusercontent.com/dfbce8862b9d6fe3bececc469532e478a71678b7b18d5e14a398089460cb83da/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d2545342542382538422545382542442542442545352538352538442545382542342542392545382541462539352545372539342541382d2532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6170706c65" alt="macOS 下载免费试用" data-canonical-src="https://img.shields.io/badge/macOS-%E4%B8%8B%E8%BD%BD%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8-%2315E879?style=for-the-badge&amp;logo=apple" style="max-width: 100%;"></a></p>
+<hr>
+<p><strong>Synthesizer V 编辑器 (Build 018)</strong></p>
+<p>在独立编辑器中轻松创建多音轨项目，或通过 VST 接口将编辑器连接到 DAW（数字音频工作站）软件。自 2018 年八月发布技术预览版以来，合成引擎不断改进，声音更脆，失真更小。图形界面也引入了许多新功能，为您的下一个创作提供新的可能性。请参阅发布说明，查看完整更新列表。</p>
+<p>与编辑器一同发布的还有暗亮配色方案、12 个预设声门效果和一个示例项目。</p>
+<p><a href="https://synthesizerv.com/resources/installation-guide-zh-cn.pdf" rel="nofollow">Synthesizer V 安装说明</a></p>
+<blockquote>
+<p>仅包含 Windows 版</p>
+</blockquote>
+<ul>
+<li>VST 是 Steinberg Media Technologies GmbH 的商标。</li>
+</ul>
+<table role="table">
+<thead>
+<tr>
+<th>系统要求</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>处理器</td>
+<td>Intel Core 处理器或同等规格的 AMD 处理器</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>1 GB +</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>Microsoft Windows 7 或更高规格 (32/64 bit)</td>
+</tr>
+<tr>
+<td>Ubuntu</td>
+<td>16.04 或更高规格 (64 bit)</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>10.11 (El Capitan) 或更高规格</td>
+</tr>
+<tr>
+<td>可用硬盘空间</td>
+<td>500 MB （若安装一个语音数据库）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>购买许可</strong><br>
+以 80 美元从零售商购买。</p>
+<hr>
+<p><a href="https://item.taobao.com/item.htm?id=584877681596" rel="nofollow"><img src="https://camo.githubusercontent.com/0ce92bee25d070025245faf43280d23255200c0d2af0ffd2bbf1fa53b6461ecc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2545352542392542332545382541312538432545352539422539422545372539352538432d2545462542432538382545342542382541442545352539422542442545352541342541372545392539392538362545352539432542302545352538432542412545462542432538392d2532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d7675652e6a73" alt="平行四界 （中国大陆地区）" data-canonical-src="https://img.shields.io/badge/%E5%B9%B3%E8%A1%8C%E5%9B%9B%E7%95%8C-%EF%BC%88%E4%B8%AD%E5%9B%BD%E5%A4%A7%E9%99%86%E5%9C%B0%E5%8C%BA%EF%BC%89-%2315E879?style=for-the-badge&amp;logo=vue.js" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>支持支付宝和大陆银行卡。</p>
+</blockquote>
+<p><a href="https://www.anicute.com/pages/VOLOR" rel="nofollow"><img src="https://camo.githubusercontent.com/201575d46383766a2394b038a2b3795c022da9271dbba65c2411ce36aec1f8e9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f253544414e69435554452d2545462542432538382545352539422542442545392539392538352545462542432538392d2532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d70617970616c" alt="ANiCUTE （国际）" data-canonical-src="https://img.shields.io/badge/%5DANiCUTE-%EF%BC%88%E5%9B%BD%E9%99%85%EF%BC%89-%2315E879?style=for-the-badge&amp;logo=paypal" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>支持信用卡和 Paypal 付款。</p>
+</blockquote>
+<ul>
+<li>可能有额外税率。</li>
+</ul>
+<h3>1.2 安装说明</h3>
+<p>官方提供的安装说明仅包含 windows 版本。<br>
+所以这里简单介绍一下 Linux 版本的安装方式。虽然 Linux 版本并不能直接用包管理器来快速安装。但是安装方式也非常简单。只需要将 synthesizer-v-editor 文件设置为可执行文件即可。</p>
+<h4>1.2.1 图形界面设置方式</h4>
+<p>首先将下载好的压缩包解压到某个文件夹中。<br>
+如果你的系统有自带的文件管理器的话可以在文件管理器中右键，在文件属性中将允许文件作为程序执行选项勾上。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/03cab43248b482f939c37c6f6203326842723ee7575d732c52ad1147e0d5046e/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f6645784c76335374795a50776d55442e706e67"><img src="https://camo.githubusercontent.com/03cab43248b482f939c37c6f6203326842723ee7575d732c52ad1147e0d5046e/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f6645784c76335374795a50776d55442e706e67" alt="synthv-作为程序执行" data-canonical-src="https://i.loli.net/2019/12/29/fExLv3StyZPwmUD.png" style="max-width: 100%;"></a></p>
+<p>这时候应该就可以在文件管理器中双击来打开了。</p>
+<h4>1.2.2 命令行设置方式</h4>
+<p>但是上面的方法偶尔会有一些小问题。比如双击后不知道什么原因，完全没有反应。<br>
+所以我通常会在命令行中设置。</p>
+<ol>
+<li>在终端中移动到解压完成的文件夹<br>
+<code class="notranslate">cd 公共/synthv-editor</code></li>
+<li>将文件设置为所有人都可执行<br>
+<code class="notranslate">chmod a+x ./synthesizer-v-editor </code></li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/565cc6b32976b37537f5d05063332c351a46fc49289d874a59e80e50a2c11df3/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f6b6e7a425356667677524b624c58542e706e67"><img src="https://camo.githubusercontent.com/565cc6b32976b37537f5d05063332c351a46fc49289d874a59e80e50a2c11df3/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f6b6e7a425356667677524b624c58542e706e67" alt="synthv-chmod" data-canonical-src="https://i.loli.net/2019/12/29/knzBSVfvwRKbLXT.png" style="max-width: 100%;"></a></p>
+<ol start="3">
+<li>运行<br>
+<code class="notranslate">sh /home/breathiness/公共/synthv-editor/synthv-editor</code></li>
+</ol>
+<h2>2. 声库</h2>
+<h3>2.1 下载地址</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2f02388565e405b88c647a03d3f8d6428c3969445cc1fb03fc7da77b562e21a2/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f664f414d3938466b455a656f6d59472e706e67"><img src="https://camo.githubusercontent.com/2f02388565e405b88c647a03d3f8d6428c3969445cc1fb03fc7da77b562e21a2/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f664f414d3938466b455a656f6d59472e706e67" alt="" data-canonical-src="https://i.loli.net/2019/12/23/fOAM98FkEZeomYG.png" style="max-width: 100%;"></a><br>
+<strong>艾可</strong><br>
+<strong>AiKO</strong></p>
+<ul>
+<li>Synthesizer V 正式版 首位中文虚拟角色歌手</li>
+<li>对任何事情都充满干劲，虽然偶尔粗心大意，却不会因遇到挫折而垂头丧气，并且对每天都有一点进步的自己感到开心。</li>
+<li>沾水钢笔的造型头饰，以及艾可代表色（#FDD000）为主体的大蝴蝶结，都隐藏着神奇的能力，墨水瓶造型的魔法耳机，据说能听到这世界所有形式的声音。</li>
+</ul>
+<blockquote>
+<p>艾可为付费音源，可在平行四界淘宝店购买</p>
+</blockquote>
+<p><a href="https://item.taobao.com/item.htm?id=584877681596" rel="nofollow"><img src="https://camo.githubusercontent.com/0ce92bee25d070025245faf43280d23255200c0d2af0ffd2bbf1fa53b6461ecc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2545352542392542332545382541312538432545352539422539422545372539352538432d2545462542432538382545342542382541442545352539422542442545352541342541372545392539392538362545352539432542302545352538432542412545462542432538392d2532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d7675652e6a73" alt="平行四界 （中国大陆地区）" data-canonical-src="https://img.shields.io/badge/%E5%B9%B3%E8%A1%8C%E5%9B%9B%E7%95%8C-%EF%BC%88%E4%B8%AD%E5%9B%BD%E5%A4%A7%E9%99%86%E5%9C%B0%E5%8C%BA%EF%BC%89-%2315E879?style=for-the-badge&amp;logo=vue.js" style="max-width: 100%;"></a><br>
+<a href="https://www.anicute.com/pages/VOLOR" rel="nofollow"><img src="https://camo.githubusercontent.com/201575d46383766a2394b038a2b3795c022da9271dbba65c2411ce36aec1f8e9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f253544414e69435554452d2545462542432538382545352539422542442545392539392538352545462542432538392d2532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d70617970616c" alt="ANiCUTE （国际）" data-canonical-src="https://img.shields.io/badge/%5DANiCUTE-%EF%BC%88%E5%9B%BD%E9%99%85%EF%BC%89-%2315E879?style=for-the-badge&amp;logo=paypal" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7ebd41df3b6bbc26610c2e21836bbe02621790038ce3d7848a19b949baf4bef4/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f4f6d676c31395770684c42787150692e706e67"><img src="https://camo.githubusercontent.com/7ebd41df3b6bbc26610c2e21836bbe02621790038ce3d7848a19b949baf4bef4/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f4f6d676c31395770684c42787150692e706e67" alt="" data-canonical-src="https://i.loli.net/2019/12/23/Omgl19WphLBxqPi.png" style="max-width: 100%;"></a><br>
+<strong>爱莲娜 芙缇</strong><br>
+<strong>Eleanor Forte</strong><br>
+Eleanor　光<br>
+Forte　强力、强音记号</p>
+<ul>
+<li>第一款英语声库。曾经使用的开发代号：ENG-F1。</li>
+<li>主要的形象是头与胸部的蝴蝶结上附着的封蜡，代表著书信的各种工艺。</li>
+<li>在麦克风架与鞋子的底部都有蜡封章花样。代表着将人与人连接起来的牵红线，在小指上打上红线蝴蝶结。在裙子上有着钢笔笔尖的形状等等。</li>
+<li>身为新技术的结晶仍保有古风。诚心、努力、择善固执。</li>
+</ul>
+<blockquote>
+<ul>
+<li>该释出的玄武声库为非完整体验版，不代表最终品质。</li>
+</ul>
+</blockquote>
+<p><a href="https://res.animen.com.tw/synthv/eleanor-setup.exe" rel="nofollow"><img src="https://camo.githubusercontent.com/a323811e73fe2ba22cfb4248440d873f92c607820e34ff1be5806e663c586cd0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f57696e646f77732d39354d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d77696e646f7773" alt="windows" data-canonical-src="https://img.shields.io/badge/Windows-95MB-%252315E879?style=for-the-badge&amp;logo=windows" style="max-width: 100%;"></a> <a href="https://res.animen.com.tw/synthv/synthv-eleanor.7z" rel="nofollow"><img src="https://camo.githubusercontent.com/0069689dbab6d07ebc38b72ec5f96c83003e200168e2b206bfe4bd5cbda0de17/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c696e75782d39344d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e7578" alt="linux" data-canonical-src="https://img.shields.io/badge/linux-94MB-%252315E879?style=for-the-badge&amp;logo=linux" style="max-width: 100%;"></a> <a href="https://res.animen.com.tw/synthv/eleanor-setup.pkg" rel="nofollow"><img src="https://camo.githubusercontent.com/b80ed34883851062001ee42b9e2f253e93ab0bed6e20f30a24367626080d2697/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d3130324d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6170706c65" alt="macOS" data-canonical-src="https://img.shields.io/badge/macOS-102MB-%252315E879?style=for-the-badge&amp;logo=apple" style="max-width: 100%;"></a><br>
+<a href="https://synthesizerv.com/zh-cn/download/form.html?product=eleanor-forte" rel="nofollow"><img src="https://camo.githubusercontent.com/5647f765dfceca5213af14d25ef22080e80729c2d9fa9b2925d0f50df35f4a7c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2545352538352538442545382542342542392545362542332541382545352538362538432545352541332542302545352542412539332d25323532333135453837393f7374796c653d666f722d7468652d6261646765" alt="注册免费声库" data-canonical-src="https://img.shields.io/badge/%E5%85%8D%E8%B4%B9%E6%B3%A8%E5%86%8C%E5%A3%B0%E5%BA%93-%252315E879?style=for-the-badge" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6a3478a430f27bd7a105d04f80d9e40aa525356c40a341c013cb2264a007a22e/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f71455357424d3955364758497762652e706e67"><img src="https://camo.githubusercontent.com/6a3478a430f27bd7a105d04f80d9e40aa525356c40a341c013cb2264a007a22e/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f71455357424d3955364758497762652e706e67" alt="character_genbu_pic" data-canonical-src="https://i.loli.net/2019/12/29/qESWBM9U6GXIwbe.png" style="max-width: 100%;"></a><br>
+<strong>玄武</strong><br>
+<strong>GENBU</strong></p>
+<ul>
+<li>日语男性声库</li>
+<li>平常的性格比较粗暴，但是歌声温柔甜美。</li>
+<li>总是会重重拿起轻轻放下，容易屈服的类型。</li>
+<li>很会照顾人。</li>
+</ul>
+<p><a href="https://res.animen.com.tw/synthv/genbu-setup.exe" rel="nofollow"><img src="https://camo.githubusercontent.com/e32ca3c723e7038d391af37349a00d18bb9127a5cb9a287324b8cb28738de18b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f57696e646f77732d39384d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d77696e646f7773" alt="windows" data-canonical-src="https://img.shields.io/badge/Windows-98MB-%252315E879?style=for-the-badge&amp;logo=windows" style="max-width: 100%;"></a> <a href="https://res.animen.com.tw/synthv/synthv-genbu.7z" rel="nofollow"><img src="https://camo.githubusercontent.com/51471ffe6f60cc3dce2c36a5dfa73656d9c1e9d85211a06f3ad335b51e67b95c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c696e75782d38394d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e7578" alt="linux" data-canonical-src="https://img.shields.io/badge/linux-89MB-%252315E879?style=for-the-badge&amp;logo=linux" style="max-width: 100%;"></a> <a href="https://res.animen.com.tw/synthv/genbu-setup.pkg" rel="nofollow"><img src="https://camo.githubusercontent.com/a5b397927f719a95149e4f341ffc6759f518f3c5b7e3dbba9e12a478c7bf1d14/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d39384d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6170706c65" alt="macOS" data-canonical-src="https://img.shields.io/badge/macOS-98MB-%252315E879?style=for-the-badge&amp;logo=apple" style="max-width: 100%;"></a><br>
+<a href="https://synthesizerv.com/zh-cn/download/form.html?product=genbu" rel="nofollow"><img src="https://camo.githubusercontent.com/5647f765dfceca5213af14d25ef22080e80729c2d9fa9b2925d0f50df35f4a7c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2545352538352538442545382542342542392545362542332541382545352538362538432545352541332542302545352542412539332d25323532333135453837393f7374796c653d666f722d7468652d6261646765" alt="注册免费声库" data-canonical-src="https://img.shields.io/badge/%E5%85%8D%E8%B4%B9%E6%B3%A8%E5%86%8C%E5%A3%B0%E5%BA%93-%252315E879?style=for-the-badge" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e30f51e271dff4611da4310be5b2b772c2464dab41a80319e8e0c271d5bebcf1/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f586669627859324a736453466e574d2e706e67"><img src="https://camo.githubusercontent.com/e30f51e271dff4611da4310be5b2b772c2464dab41a80319e8e0c271d5bebcf1/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32332f586669627859324a736453466e574d2e706e67" alt="" data-canonical-src="https://i.loli.net/2019/12/23/XfibxY2JsdSFnWM.png" style="max-width: 100%;"></a><br>
+<strong>闇音レンリ</strong><br>
+<strong>Yamine Renri</strong></p>
+<ul>
+<li>日语女性声库，经授权由 Yuzuri 的 UTAU 版本重制。</li>
+<li>她最喜欢星星和月亮，还有有花边的衣服。</li>
+<li>浏览 <a href="https://renrivoice.wixsite.com/renri-voice" rel="nofollow">闇音的官方网站</a> 以了解更多信息。</li>
+</ul>
+<blockquote>
+<ul>
+<li>该释出的闇音レンリ声库为非完整体验版，不代表最终品质。</li>
+</ul>
+</blockquote>
+<p><a href="https://res.animen.com.tw/synthv/renri-setup.exe" rel="nofollow"><img src="https://camo.githubusercontent.com/00c0efa7c4c5af4fdb998e9be6bd447c4898dfb2a98f5783e33f72d5ceceef12/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f57696e646f77732d3339324d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d77696e646f7773" alt="windows" data-canonical-src="https://img.shields.io/badge/Windows-392MB-%252315E879?style=for-the-badge&amp;logo=windows" style="max-width: 100%;"></a> <a href="https://res.animen.com.tw/synthv/synthv-renri.7z" rel="nofollow"><img src="https://camo.githubusercontent.com/8f4e11774c285771548408f3c0001d6bb952e5ae475074f27c911d9781758d00/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c696e75782d3338364d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e7578" alt="linux" data-canonical-src="https://img.shields.io/badge/linux-386MB-%252315E879?style=for-the-badge&amp;logo=linux" style="max-width: 100%;"></a> <a href="https://res.animen.com.tw/synthv/renri-setup.pkg" rel="nofollow"><img src="https://camo.githubusercontent.com/5074132b8634eb9da022ae29c1ba8d77b88f21fd4b04cdefadf281d5713a3646/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d3339324d422d25323532333135453837393f7374796c653d666f722d7468652d6261646765266c6f676f3d6170706c65" alt="macOS" data-canonical-src="https://img.shields.io/badge/macOS-392MB-%252315E879?style=for-the-badge&amp;logo=apple" style="max-width: 100%;"></a><br>
+<a href="https://synthesizerv.com/zh-cn/download/form.html?product=yamine-renri" rel="nofollow"><img src="https://camo.githubusercontent.com/5647f765dfceca5213af14d25ef22080e80729c2d9fa9b2925d0f50df35f4a7c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2545352538352538442545382542342542392545362542332541382545352538362538432545352541332542302545352542412539332d25323532333135453837393f7374796c653d666f722d7468652d6261646765" alt="注册免费声库" data-canonical-src="https://img.shields.io/badge/%E5%85%8D%E8%B4%B9%E6%B3%A8%E5%86%8C%E5%A3%B0%E5%BA%93-%252315E879?style=for-the-badge" style="max-width: 100%;"></a></p>
+<h3>2.2 安装说明</h3>
+<p>在下载好声源后将压缩包直接解压到编辑器的文件夹，即可安装完成。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4c9c201306298cd6b9f7913606b6dd67bcaeb0863f5a3234c8ebcf32a6c1105f/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32382f644d6d6e7872414b7a4737447665792e706e67"><img src="https://camo.githubusercontent.com/4c9c201306298cd6b9f7913606b6dd67bcaeb0863f5a3234c8ebcf32a6c1105f/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32382f644d6d6e7872414b7a4737447665792e706e67" alt="2019-12-12-221946_1920x1080_scrot" data-canonical-src="https://i.loli.net/2019/12/28/dMmnxrAKzG7Dvey.png" style="max-width: 100%;"></a><br>
+虽然此时已经安装完成，但还需要申请一个注册码。否则还是无法使用声源。<br>
+在授权管理器页面的状态会显示未注册。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/80d0ec38aac1f650cb382978364961aca8e0193d7a499810093b16ee706ff196/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32382f367642516c676b62695352494d4b562e706e67"><img src="https://camo.githubusercontent.com/80d0ec38aac1f650cb382978364961aca8e0193d7a499810093b16ee706ff196/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32382f367642516c676b62695352494d4b562e706e67" alt="2019-12-12-220752_1920x1080_scrot" data-canonical-src="https://i.loli.net/2019/12/28/6vBQlgkbiSRIMKV.png" style="max-width: 100%;"></a><br>
+进入注册免费声库的页面，填写你的一些信息。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f4594b730cf53893b4494721c331741290259024c2a2a1ee42efa8f56b1e607a/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32382f7a4e78704b7763574d3554464f66622e706e67"><img src="https://camo.githubusercontent.com/f4594b730cf53893b4494721c331741290259024c2a2a1ee42efa8f56b1e607a/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32382f7a4e78704b7763574d3554464f66622e706e67" alt="2019-12-12-231628_1920x1080_scrot" data-canonical-src="https://i.loli.net/2019/12/28/zNxpKwcWM5TFOfb.png" style="max-width: 100%;"></a><br>
+之后注册码会以邮件的形式发送至你留下的电子邮箱。<br>
+将邮箱中的注册码填入授权管理器中的激活窗口进行激活即可。</p>
+<h1>二、配置</h1>
+<h2>1. 设置快捷打开程序</h2>
+<p>按照前面的安装说明虽然可以正常打开<br>
+但是这种情况每次要打开 synthv 都要先打开命令行，然后输入一大串文本。而且不能关闭终端，非常麻烦。<br>
+于是我在我的 Fish 的配置文件中添加了这一行。Zsh 也是同样的写法。<br>
+<code class="notranslate">alias synthv="/home/breathiness/公共/synthv-editor/synthesizer-v-editor"</code><br>
+然后就可以通过在命令行输入 synthv 就能直接打开了。<br>
+而因为我使用的是 i3wm 版的 manjaro。自带有配置好的 dmenu。直接按<code class="notranslate">super</code>+<code class="notranslate">D</code>即可输入<code class="notranslate">synthv</code>来打开软件了。</p>
+<blockquote>
+<p>实际上只要输入名字中一部分就能定位到了。</p>
+</blockquote>
+<h2>2. 设置中文界面</h2>
+<p>在 settings 栏中选择 Preferences 选项。或者按快捷键<code class="notranslate">Ctrl</code>+<code class="notranslate">Alt</code>+<code class="notranslate">P</code></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3ff75cc03de53fa6500da8183856d610fa073c72b8e0b66deee49c0bdbfdd03e/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f58644b41666a4362714775777945562e706e67"><img src="https://camo.githubusercontent.com/3ff75cc03de53fa6500da8183856d610fa073c72b8e0b66deee49c0bdbfdd03e/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f32392f58644b41666a4362714775777945562e706e67" alt="synthv-setting" data-canonical-src="https://i.loli.net/2019/12/29/XdKAfjCbqGuwyEV.png" style="max-width: 100%;"></a></p>
+<h2>3. 数位音频工作站（DAW）挂载 VSTi 插件</h2>
+<p>虽然我很少会用到这种方式，但还是介绍一下吧。</p>
+<blockquote>
+<p>此说明以 REAPER 作为演示宿主软件<br>
+REAPER 在 Linux 下的使用可以查看 @啦哆咪 的文章<br>
+<a href="https://lado.me/" rel="nofollow">啦哆咪 用Linux做音乐</a></p>
+</blockquote>
+<h3>3.1 复制 VSTi 文件至相应路径</h3>
+<p>在设置页面可以看到，REAPER 的默认 VST 文件夹为<code class="notranslate">/home/breathiness/.vst</code>以及<code class="notranslate">/home/breathiness/.vst3</code><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/75dc9523b4fdfa71af8cfb9a7ac0959dabc331b457504680d8760075f8ccd6ea/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f6a63665765516848544269494333412e706e67"><img src="https://camo.githubusercontent.com/75dc9523b4fdfa71af8cfb9a7ac0959dabc331b457504680d8760075f8ccd6ea/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f6a63665765516848544269494333412e706e67" alt="synthv-reaper-vsti 文件路径" data-canonical-src="https://i.loli.net/2019/12/31/jcfWeQhHTBiIC3A.png" style="max-width: 100%;"></a></p>
+<p>将 synthv 程序文件夹中后缀为 <code class="notranslate">.so</code> 的文件复制到上面的 VST 文件夹中，即可安装完成。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a541e771d43b00b747d42b8a26968549725b4369dacfe85cfabc668e32cc5c72/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f36753776425169464c434e6c5550672e706e67"><img src="https://camo.githubusercontent.com/a541e771d43b00b747d42b8a26968549725b4369dacfe85cfabc668e32cc5c72/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f36753776425169464c434e6c5550672e706e67" alt="synthv-reaper-vsti 文件复制" data-canonical-src="https://i.loli.net/2019/12/31/6u7vBQiFLCNlUPg.png" style="max-width: 100%;"></a></p>
+<h3>3.2 宿主端设置</h3>
+<p>在轨道中点击 <code class="notranslate">Fx</code> 按钮，然后在 VSTi 选项中选择 VSTi:Synthesizer V VSTi(Dreamtonics)(32 out)<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/cbd00075fdc7c6bf4454dba595da452f5ecd26d7a1cecd351acc5aec3b168bf2/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f6373376f6d3567754d6a534c4f7a382e706e67"><img src="https://camo.githubusercontent.com/cbd00075fdc7c6bf4454dba595da452f5ecd26d7a1cecd351acc5aec3b168bf2/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f6373376f6d3567754d6a534c4f7a382e706e67" alt="synthv-reaper-reaper 设置" data-canonical-src="https://i.loli.net/2019/12/31/cs7om5guMjSLOz8.png" style="max-width: 100%;"></a></p>
+<p>此时还是 disconnected 的状态，并没有连接完成。此时需要记住右边 port:XXXXX 中的五位数字。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ca5cb9399233ba660e49259b66c4b358a18249c648b6aa97189138309c481bb8/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f4f6f37523331436d58344a51736c782e706e67"><img src="https://camo.githubusercontent.com/ca5cb9399233ba660e49259b66c4b358a18249c648b6aa97189138309c481bb8/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f4f6f37523331436d58344a51736c782e706e67" alt="synthv-reaper-vsti 安装完成" data-canonical-src="https://i.loli.net/2019/12/31/Oo7R31CmX4JQslx.png" style="max-width: 100%;"></a></p>
+<h3>3.3 SynthV 连接设置</h3>
+<p>在 SynthV 的设置栏中选择“连接到插件宿主”，将之前记录下的五位数字填入端口号码。确认即可。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3770804ceea2a8264f52abe101f8a3758fe9adb4b3c4d17ac67274665b05ac7c/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f346b587970536d434e7533456477742e706e67"><img src="https://camo.githubusercontent.com/3770804ceea2a8264f52abe101f8a3758fe9adb4b3c4d17ac67274665b05ac7c/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f346b587970536d434e7533456477742e706e67" alt="synthv-reaper-vsti 连接到宿主软件" data-canonical-src="https://i.loli.net/2019/12/31/4kXypSmCNu3Edwt.png" style="max-width: 100%;"></a></p>
+<p>此时回到 REAPER，显示 connected。就证明已经连接完成了。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/19dac05c0619fbf78385e14d1d789d6b0a9ffd1d4a022c3d99c2d2f52d824bf8/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f53444d72646f6670774a4c68506b382e706e67"><img src="https://camo.githubusercontent.com/19dac05c0619fbf78385e14d1d789d6b0a9ffd1d4a022c3d99c2d2f52d824bf8/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33312f53444d72646f6670774a4c68506b382e706e67" alt="synthv-reaper-vsti 连接完成" data-canonical-src="https://i.loli.net/2019/12/31/SDMrdofpwJLhPk8.png" style="max-width: 100%;"></a></p>
+<h1>三、使用</h1>
+<h2>1. 导入伴奏</h2>
+<p>通常我们会需要配合伴奏来制作人声。所以会先导入伴奏。</p>
+<blockquote>
+<p>伴奏的格式需要为 WAV，MP3 是导入不了的。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7236c8e5d6c54236bd548009f7cd283cbf39c23fb18795165512e11c3c3bdd34/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f4a5644506347524b376c49666239742e706e67"><img src="https://camo.githubusercontent.com/7236c8e5d6c54236bd548009f7cd283cbf39c23fb18795165512e11c3c3bdd34/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f4a5644506347524b376c49666239742e706e67" alt="synthv-导入伴奏" data-canonical-src="https://i.loli.net/2019/12/30/JVDPcGRK7lIfb9t.png" style="max-width: 100%;"></a></p>
+<h2>2. 绘制音符</h2>
+<p>鼠标双击即可在对应位置绘制音符。通过鼠标拖动可以调整音符的位置。<br>
+在音符末尾拖动，可调整音符的长度。<br>
+除了使用鼠标编辑，也可以使用 MIDI 键盘来进行输入。</p>
+<h2>3. 输入歌词</h2>
+<p>双击音符即可修改那个音符的歌词，按 TAB 键可跳到下一个音符。<br>
+也可以框选多个音符，然后右键选择输入歌词选项。可直接输入多个歌词。<br>
+歌词支持直接输入文字或罗马音。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a4097edba386447f4a2b2abdc3eede55512868e3511e4c34a623d22bedad0e9a/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f7833654e5839724b6d7537386977522e706e67"><img src="https://camo.githubusercontent.com/a4097edba386447f4a2b2abdc3eede55512868e3511e4c34a623d22bedad0e9a/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f7833654e5839724b6d7537386977522e706e67" alt="synthv-输入歌词 1" data-canonical-src="https://i.loli.net/2019/12/30/x3eNX9rKmu78iwR.png" style="max-width: 100%;"></a></p>
+<h2>3. 导出</h2>
+<p>在项目栏选择渲染到文件。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1981848f089a634fb58b9ffa3bf9cdb71176f2e4a0ec99694dfa3dc7368d4b53/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f525855414d384e35574f315a7845672e706e67"><img src="https://camo.githubusercontent.com/1981848f089a634fb58b9ffa3bf9cdb71176f2e4a0ec99694dfa3dc7368d4b53/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f525855414d384e35574f315a7845672e706e67" alt="synthv-渲染" data-canonical-src="https://i.loli.net/2019/12/30/RXUAM8N5WO1ZxEg.png" style="max-width: 100%;"></a></p>
+<p>渲染设定直接默认即可。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0a3096f7591ef15400f6b722763235eee57e44b40daf6f384f18b03e7db13e26/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f51366a3348544b41445368614345772e706e67"><img src="https://camo.githubusercontent.com/0a3096f7591ef15400f6b722763235eee57e44b40daf6f384f18b03e7db13e26/68747470733a2f2f692e6c6f6c692e6e65742f323031392f31322f33302f51366a3348544b41445368614345772e706e67" alt="synthv-渲染 1" data-canonical-src="https://i.loli.net/2019/12/30/Q6j3HTKADShaCEw.png" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>此时渲染的音频为不带伴奏的纯人声</p>
+</blockquote>
+<h1>四、预告</h1>
+<p>下期我们介绍一下如何获取无人声伴奏，或者宿主软件（REAPER）的配置和使用方法。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/42f3172bd72bfd2d79b937112ebf7f2126d4803de7f755b93ebcfadfbca6879f/68747470733a2f2f692e6c6f6c692e6e65742f323032302f30312f30312f717458316d76567a69637352416b372e706e67"><img src="https://camo.githubusercontent.com/42f3172bd72bfd2d79b937112ebf7f2126d4803de7f755b93ebcfadfbca6879f/68747470733a2f2f692e6c6f6c692e6e65742f323032302f30312f30312f717458316d76567a69637352416b372e706e67" alt="audacity-伴奏导入" data-canonical-src="https://i.loli.net/2020/01/01/qtX1mvVzicsRAk7.png" style="max-width: 100%;"></a></p>
+<hr>
+<p><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="nofollow"><img alt="知识共享许可协议" src="https://camo.githubusercontent.com/394c08dc4b8a47e0c6eaecef98132816cccc0bf446259bde1911462f4d6f5a91/68747470733a2f2f692e6372656174697665636f6d6d6f6e732e6f72672f6c2f62792d6e632d73612f342e302f38387833312e706e67" data-canonical-src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" style="max-width: 100%;"></a><br>本作品采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="nofollow">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://breathiness.github.io"> Blog Title </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","breathiness/breathiness.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+
+</html>

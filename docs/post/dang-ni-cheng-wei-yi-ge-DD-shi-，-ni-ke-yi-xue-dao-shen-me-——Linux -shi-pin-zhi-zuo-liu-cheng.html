@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="当你成为一个DD时，你可以学到什么——Linux 视频制作流程">
+<title>当你成为一个DD时，你可以学到什么——Linux 视频制作流程</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">当你成为一个DD时，你可以学到什么——Linux 视频制作流程</h1>
+<div class="title-right">
+    <a href="https://breathiness.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/breathiness/breathiness.github.io/issues/4" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody">
+
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87">前期准备</a>
+<ul>
+<li><a href="#%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD">视频下载</a>
+<ul>
+<li><a href="#%E7%9B%B4%E6%92%AD%E6%BA%90">直播源</a>
+<ul>
+<li><a href="#ffmpeg">ffmpeg</a></li>
+<li><a href="#obs">OBS</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A7%86%E9%A2%91%E6%BA%90">视频源</a>
+<ul>
+<li><a href="#youtube-dl-linux">YouTube-dl (Linux)</a></li>
+<li><a href="#%E7%BC%93%E5%AD%98%E8%A7%86%E9%A2%91%E5%90%88%E5%B9%B6-android">缓存视频合并 (Android)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%B4%A0%E6%9D%90%E5%88%B6%E4%BD%9C">素材制作</a>
+<ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%94%B6%E9%9B%86">相关知识收集</a>
+<ul>
+<li><a href="#%E6%AD%8C%E6%9B%B2%E4%BF%A1%E6%81%AF">歌曲信息</a></li>
+<li><a href="#%E6%AD%8C%E8%AF%8D%E6%B3%A8%E9%87%8A">歌词注释</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B0%81%E9%9D%A2%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86">封面图片处理</a>
+<ul>
+<li><a href="#b-%E7%AB%99%E5%B0%81%E9%9D%A2%E4%B8%8B%E8%BD%BD">B 站封面下载</a></li>
+<li><a href="#gimp-%E4%BD%BF%E7%94%A8">GIMP 使用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%A7%86%E9%A2%91%E5%88%B6%E4%BD%9C">视频制作</a>
+<ul>
+<li><a href="#%E7%AE%80%E5%8D%95%E5%89%AA%E8%BE%91">简单剪辑</a>
+<ul>
+<li><a href="#ffmpeg-1">ffmpeg</a></li>
+<li><a href="#olive">Olive</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E5%B9%95%E5%88%B6%E4%BD%9C">字幕制作</a>
+<ul>
+<li><a href="#aegisub">Aegisub</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%90%8E%E6%9C%9F%E5%8E%8B%E5%88%B6">后期压制</a>
+<ul>
+<li><a href="#%E5%8E%8B%E5%88%B6%E5%8F%82%E6%95%B0">压制参数</a>
+<ul>
+<li><a href="#%E8%A7%86%E9%A2%91%E7%A0%81%E7%8E%87">视频码率</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8E%8B%E5%88%B6%E8%BD%AF%E4%BB%B6">压制软件</a>
+<ul>
+<li><a href="#ffmpeg-2">ffmpeg</a></li>
+<li><a href="#handbrake">HandBrake</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%90%8E%E8%AE%B0">后记</a></li>
+</ul>
+
+<h1>前言</h1>
+<p>最近我在 DD 时听到了一首我非常喜欢的歌<br>
+【waku 麻吉】第二期--《惑姬的酒馆》<br>
+<a href="http://www.bilibili.com/video/av78489736" rel="nofollow">http://www.bilibili.com/video/av78489736</a><br>
+这期节目的中间惑姬 Waku 翻唱的一首《Bartender Angel》<br>
+一听就爱上了。有种想要单曲循环的冲动。但是这首歌并没有人剪辑出来。而且组里制作好的成品会加上一个片头。感觉会影响我单曲循环的感觉。所以我决定自己把这段视频剪辑出来，并且烤了<br>
+所以这次要介绍的是我如何从零开始学习视频制作<br>
+注：本文所使用的软件全部为开源软件，并且全部支持 Linux 系统</p>
+<h1>前期准备</h1>
+<h2>视频下载</h2>
+<p>首先在制作字幕之前，需要先获取原视频。</p>
+<h3>直播源</h3>
+<h4>ffmpeg</h4>
+<p>如果你想要录制直播素材，可以使用我们万能的 ffmpeg<br>
+首先在直播页面获取视频推流链接<br>
+然后在命令行使用以下命令进行下载</p>
+<pre class="notranslate"><code class="notranslate">ffmpeg -i "视频链接" -c copy output.mp4
+</code></pre>
+<p>要结束录制按 <code class="notranslate">Q</code> 即可</p>
+<h4>OBS</h4>
+<p>如果你想要包含直播弹幕一起录制的话可以使用 OBS 进行录制<br>
+首先在设置页面调整好视频录制的参数<br>
+将在捕捉源里添加浏览器页面<br>
+然后点击开始录制即可</p>
+<h3>视频源</h3>
+<h4>YouTube-dl (Linux)</h4>
+<p>但是很明显，我已经错过了直播。只能从录播中获取<br>
+在电脑下载视频可以使用 YouTube-dl 工具<br>
+常用使用方式：<br>
+1.下载视频</p>
+<pre class="notranslate"><code class="notranslate">youtube-dl 视频链接
+</code></pre>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9c3507c33ecd51f8dd7fb5c4598ffa190e902e5b75d81773571b906b2e3fb824/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f796f75747562652d646c2e706e67"><img src="https://camo.githubusercontent.com/9c3507c33ecd51f8dd7fb5c4598ffa190e902e5b75d81773571b906b2e3fb824/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f796f75747562652d646c2e706e67" alt="" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/youtube-dl.png" style="max-width: 100%;"></a></p>
+<p>2.自动下载最高画质视频 (YouTube)</p>
+<pre class="notranslate"><code class="notranslate">youtube-dl -f best 视频链接
+</code></pre>
+<p>3.下载视频中的音频</p>
+<pre class="notranslate"><code class="notranslate">youtube-dl -x 视频链接
+</code></pre>
+<h4>缓存视频合并 (Android)</h4>
+<p>首先在 B 站客户端缓存你想下载的视频<br>
+打开应用，选择你想下载的视频<br>
+点击保存即可<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f993f36fa475c0abe50b3680b4bec63c26a32c00f1ee6a1d6a34c78d7f0b475a/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f53637265656e73686f745f32303230303132393031313034342e706e67"><img src="https://camo.githubusercontent.com/f993f36fa475c0abe50b3680b4bec63c26a32c00f1ee6a1d6a34c78d7f0b475a/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f53637265656e73686f745f32303230303132393031313034342e706e67" alt="缓存视频合并" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Screenshot_20200129011044.png" style="max-width: 100%;"></a></p>
+<h2>素材制作</h2>
+<h3>相关知识收集</h3>
+<h4>歌曲信息</h4>
+<p>查询了一下这首歌的信息，也是有点意外的。专辑的年龄比我大<br>
+在电台里惑姬也提到，这首歌是翻唱的。于是我也查到了英文原版的一些信息<br>
+中文翻唱版<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/fa5d709fcf5b6a56153a848b8fe3fe7ed58d4554b47c34761e8c2efadfd9eae0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f2545352541352542442545362538332542332545382542302538382545362538312538422545372538382542312d2545342542382539332545382542452539312545352542302538312545392539442541322e6a7067"><img src="https://camo.githubusercontent.com/fa5d709fcf5b6a56153a848b8fe3fe7ed58d4554b47c34761e8c2efadfd9eae0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f2545352541352542442545362538332542332545382542302538382545362538312538422545372538382542312d2545342542382539332545382542452539312545352542302538312545392539442541322e6a7067" alt="好想谈恋爱-专辑封面" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/%E5%A5%BD%E6%83%B3%E8%B0%88%E6%81%8B%E7%88%B1-%E4%B8%93%E8%BE%91%E5%B0%81%E9%9D%A2.jpg" style="max-width: 100%;"></a><br>
+《Bartender Angel》<br>
+歌手：范晓萱<br>
+专辑：好想谈恋爱<br>
+发行时间：1996.12.1<br>
+英文原版<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/12b65633fd2604cbe00386a61fe6e1f95f7c7d0eaaa293c679033b05aab6601b/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f4c6966652d2545342542382539332545382542452539312545352542302538312545392539442541322e6a7067"><img src="https://camo.githubusercontent.com/12b65633fd2604cbe00386a61fe6e1f95f7c7d0eaaa293c679033b05aab6601b/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f4c6966652d2545342542382539332545382542452539312545352542302538312545392539442541322e6a7067" alt="点击编辑标题" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Life-%E4%B8%93%E8%BE%91%E5%B0%81%E9%9D%A2.jpg" style="max-width: 100%;"></a><br>
+《Gordon's Gardenparty》<br>
+歌手：The Cardigans<br>
+专辑：Life<br>
+发行时间：1995.3.1</p>
+<h4>歌词注释</h4>
+<p>这首歌比较有趣的一个地方在于，提到了很多款酒的名字<br>
+用注释的方式标注出来，可以让有兴趣的观众了解一些相关的小知识<br>
+BARTENDER ANGEL<br>
+词：何庆远<br>
+曲：Svensson Peter、Persson Nina<br>
+颓废 闷 灰暗<br>
+我的舞台 Shaking wine</p>
+<blockquote>
+<p>Wine：Wine 是在 x86、x86-64 容许类 Unix 操作系统在 X Window System 运行 Microsoft Windows 程式的软体。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/39048141323f915dc9f62534ea55b4259463e276a9649f23941d770ff6d669fd/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f57494e452d6c6f676f2e706e67"><img src="https://camo.githubusercontent.com/39048141323f915dc9f62534ea55b4259463e276a9649f23941d770ff6d669fd/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f57494e452d6c6f676f2e706e67" alt="" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/WINE-logo.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<blockquote>
+<p>这条注释是私货，因为红酒太过常规。大家都已经有了解，没必要介绍。但是 Wine 这个软件应该是没什么人知道</p>
+</blockquote>
+<p>后现代浪漫<br>
+赶走遗憾<br>
+Shaking here<br>
+shaking there<br>
+火热辣辣 Martini</p>
+<blockquote>
+<p>Martini：乾马天尼（Dry Martini），是一款琴酒与不甜香艾酒调制的鸡尾酒，以橄榄或扭转柠檬皮做装饰，马丁尼被国际调酒师协会收录为经典鸡尾酒（the Unforgettables）<br>
+配置方法<br>
+60 毫升琴酒<br>
+10 毫升不甜香艾酒<br>
+将材料与冰块放入搅拌杯，以搅拌法混合均匀，滤冰倒入冰镇马丁尼杯，再以扭转柠檬皮或绿橄榄做装饰</p>
+</blockquote>
+<p>Margarita 的神秘</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4ff9f39bcacaf87505c28bf62fca2cf1846102e74e2b99c2eaf3cb0c18ba3fa3/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f4d61726761726974612e6a7067"><img src="https://camo.githubusercontent.com/4ff9f39bcacaf87505c28bf62fca2cf1846102e74e2b99c2eaf3cb0c18ba3fa3/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f4d61726761726974612e6a7067" alt="" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Margarita.jpg" style="max-width: 100%;"></a><br>
+玛格丽塔（Margarita）是一种用龙舌兰酒配制的鸡尾酒，以龙舌兰酒、柠檬汁和君度橙皮酒等成分兑成的，其杯口上通常粘有一层细盐（这是因为口中有一点盐味时龙舌兰酒的酒味会更好）。在炎热的夏季适合作为餐前酒。<br>
+配制方法<br>
+35ml 龙舌兰酒，<br>
+20ml 君度橙皮酒<br>
+15ml Lime 汁，<br>
+放入摇酒壶摇匀。<br>
+将鸡尾酒杯杯沿用柠檬片蘸湿，<br>
+将蘸湿的杯子在细盐面中蘸一下，沾上一层“盐霜”，<br>
+把摇好的酒倒入有盐边的杯子。<br>
+有时也可加冰块和柠檬皮。</p>
+</blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%8E%9B%E6%A0%BC%E4%B8%BD%E5%A1%94?wprov=sfla1" rel="nofollow">玛格丽特维基百科页面</a></p>
+<p>怎么 enjoy 最过瘾<br>
+bartender angel 告诉你<br>
+把苦涩 V.S 甜蜜<br>
+渴望 笑 眼神<br>
+酒精作怪 Sexy night<br>
+背对着伤心<br>
+今天不是 Lonely night<br>
+Shaking wine<br>
+Just for lady Gintonic</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b65035d2915d526c2948830a5d471400265c07e1ab5595559edb97810a86774e/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f47696e253230616e64253230546f6e696325323077697468253230696e6772656469656e74732e6a7067"><img src="https://camo.githubusercontent.com/b65035d2915d526c2948830a5d471400265c07e1ab5595559edb97810a86774e/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f47696e253230616e64253230546f6e696325323077697468253230696e6772656469656e74732e6a7067" alt="" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Gin%20and%20Tonic%20with%20ingredients.jpg" style="max-width: 100%;"></a><br>
+琴汤尼（Gin Tonic），是以金酒为基础的调酒里面知名度最高的一种饮品。<br>
+配制方法<br>
+做法 1：dry gin（干杜松子酒） 45ml +cut lime（酸橙片） 1 个+Tonic Water（汤尼水）适量<br>
+做法 2：DRY GIN 和 TONIC WATER，依照酒和 TONIC WATER 一比八（从 1 比 8 到 2 比 5 之间的任何比例都是可以的）的比例的搅拌均匀后，将混合液倒入装满冰块的杯子，扔进一片新鲜的切片柠檬就可以了<br>
+做法 3：杯子装入六分满冰块，量琴酒 1 又 1/2 oz 倒入，tonic water 加至八分满。搅拌均匀后放入调酒棒；可将柠檬片轻抹杯口丢入。<br>
+<a href="https://en.wikipedia.org/wiki/Gin_and_tonic?wprov=sfla1" rel="nofollow">Gin &amp; tonic 维基百科页面</a></p>
+</blockquote>
+<p>Taquila 让你热情</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a610331536e06a884c762d896def74471860c1147b44d2991c19e000bc311d97/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f54657175696c61732e4a5047"><img src="https://camo.githubusercontent.com/a610331536e06a884c762d896def74471860c1147b44d2991c19e000bc311d97/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f54657175696c61732e4a5047" alt="龙舌兰酒" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Tequilas.JPG" style="max-width: 100%;"></a><br>
+龙舌兰酒（西班牙文：Tequila），是墨西哥产、使用龙舌兰草的心（Piña，在植物学上，指的是这种植物的鳞茎部分）为原料所制造出的含酒精饮品，属蒸馏酒一类。<br>
+龙舌兰酒是调酒界最常用到的六大基酒之一（其他五种则是兰姆酒，伏特加，威士忌，白兰地与琴酒），通常在一些口味厚重的调酒里面都可以见到其身影。<br>
+<a href="https://zh.wikipedia.org/wiki/%E9%BE%8D%E8%88%8C%E8%98%AD%E9%85%92?wprov=sfla1" rel="nofollow">龙舌兰酒维基百科页面</a></p>
+</blockquote>
+<p>怎么 enjoy 最过瘾<br>
+bartender angel angel 告诉你<br>
+Bartender give you everything<br>
+B52 high 到底</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e81e76155fc356597c8c309f13fd54ccf29ce87e9dcca26111be2d4c5f139c07/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f436f636b7461696c2532306235322e6a7067"><img src="https://camo.githubusercontent.com/e81e76155fc356597c8c309f13fd54ccf29ce87e9dcca26111be2d4c5f139c07/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f436f636b7461696c2532306235322e6a7067" alt="" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Cocktail%20b52.jpg" style="max-width: 100%;"></a><br>
+B-52 是鸡尾酒中喝法比较独特的一种，要配上短吸管，餐巾纸和打火机。喝的时候把酒点燃，用吸管一口气喝完，可体验到先冷后热那种冰火两重天的感觉。<br>
+B-52 鸡尾酒要依次注入三种酒，先咖啡甜酒，然后甜酒，最后金万利（或黑朗姆酒），在星级酒店和一些专营性的咖啡店较为流行。</p>
+</blockquote>
+<p>Bloody Mary 颠覆你</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/Bloody%20Mary%20with%20cold%20drink%20in%20restaurant.jpg"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/Bloody%20Mary%20with%20cold%20drink%20in%20restaurant.jpg" alt="Bloody Mary with cold drink in restaurant" style="max-width: 100%;"></a><br>
+血玛丽（英语：Bloody Mary），又称迷人血玛莉，是一种可以在上午供应的，酒精含量较低的红色鸡尾酒。基本成分是伏特加、番茄汁和其他各种配料，如辣酱油、塔巴斯科辣椒酱、法式清汤、辣根、芹菜、橄榄、盐、黑胡椒、辣椒、柠檬汁、芹菜盐。因此也被许多人认为是世界上最难喝的鸡尾酒。</p>
+</blockquote>
+<p>怎么 enjoy 最过瘾<br>
+bartender angel angel 告诉你<br>
+La La La Do Bi Do Bi Do......</p>
+<h3>封面图片处理</h3>
+<h4>B 站封面下载</h4>
+<p>封面制作是必须的<br>
+不管怎么说直接使用截图还是太磕碜了<br>
+组内制作的这个封面是真的很好看<br>
+但是作为组外人员如果直接拿来使用的话，感觉不太好<br>
+还是拿来做一下参考，进行一些修改会好一些<br>
+首先，我们需要将参考的图片下载下来<br>
+复制 AV 号到这个网站<br>
+<a href="http://www.galmoe.com/" rel="nofollow">b 站封面提取_bilibili 封面提取_av 号封面提取</a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/Screenshot_20200129154851.png"><img src="https://raw.githubusercontent.com/breathiness/breathiness.github.io/master/img/Screenshot_20200129154851.png" alt="" style="max-width: 100%;"></a><br>
+点击提取即可</p>
+<h4>GIMP 使用</h4>
+<p>在 GIMP 中新建一个图片，参考下载好的图片进行绘制</p>
+<p>然后再加上一点点细节，一张封面图就完成了(此处的软件其实换成了krita)</p>
+<h1>视频制作</h1>
+<h2>简单剪辑</h2>
+<h3>ffmpeg</h3>
+<p>这里使用到的，依然万能的 ffmpeg<br>
+首先使用 ffplay 播放</p>
+<table role="table">
+<thead>
+<tr>
+<th align="center">按钮</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Q，ESC</td>
+<td align="center">退出</td>
+</tr>
+<tr>
+<td align="center">F</td>
+<td align="center">全屏</td>
+</tr>
+<tr>
+<td align="center">P，SPC</td>
+<td align="center">暂停</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">切换显示模式（视频/音频波形/音频频带）</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">步进到下一帧</td>
+</tr>
+<tr>
+<td align="center">left/right</td>
+<td align="center">快退/快进 10 秒</td>
+</tr>
+<tr>
+<td align="center">down/up</td>
+<td align="center">快退/快进 1 分钟</td>
+</tr>
+<tr>
+<td align="center">page down/page up_跳转到前一章/下一章（如果没有章节，快退/快进 10 分钟）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">鼠标点击</td>
+<td align="center">跳转到鼠标点击的位置（根据鼠标在显示窗口点击的位置计算百分比）</td>
+</tr>
+</tbody>
+</table>
+<p>找到需要剪辑的时间点，使用 ffmpeg 将片段剪辑出来</p>
+<pre class="notranslate"><code class="notranslate">ffmpeg -ss 01:08:43 -to 01:12:00 -accurate_seek -i input.mp4 -codec copy -avoid_negative_ts 1 output.mp4
+</code></pre>
+<h3>Olive</h3>
+<p>如果不想使用命令行你也可以使用 Olive 来进行剪辑</p>
+<p>将视频导入</p>
+<p>在对应的位置将视频剪切</p>
+<p>导出</p>
+<h2>字幕制作</h2>
+<h3>Aegisub</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1a3aa6d96c8112a93bfacff44dae85e685376a35170589fc77023a05ea9365ca/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f416567697375622d6c6f676f2d6c617267652e706e67"><img src="https://camo.githubusercontent.com/1a3aa6d96c8112a93bfacff44dae85e685376a35170589fc77023a05ea9365ca/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f416567697375622d6c6f676f2d6c617267652e706e67" alt="Aegisub-logo-large" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Aegisub-logo-large.png" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>Aegisub 是一个免费，跨平台且开源的用于创建和修改字幕的工具。您可以使用 Aegisub 轻松地通过音频制作时间轴，并使用多种功能强大的工具，来修改字幕的样式，同时您还可以看到实时的视频预览</p>
+</blockquote>
+<p>作为字幕制作软件，Aegisub 是非常优秀的。同类软件 Arctime 在便捷性方面会好一些。但是很遗憾的是在我的 Linux 里无法导入视频。只能无奈放弃</p>
+<p>首先我们将字幕的样式进行设置<br>
+为了保证可读性，字体最好选用无衬线字体<br>
+调整一下大小，正文字体完成</p>
+<p>复制一下正文字体，位置修改为左上角。字体大小改小。注释字体完成</p>
+<p>直接复制粘贴导入歌词<br>
+左键设置字幕开始时间，右键设置结束时间<br>
+并且通过Q、W、A、S，快捷键确认位置</p>
+<p>先将所有歌词打完轴，然后复制歌词行，填入注释内容<br>
+将该行字幕样式设置为注释</p>
+<p>设置好注释后，开始K轴<br>
+在音频条下方点开KTV模式<br>
+点击字幕中未自动分开的文字<br>
+调整每个字，使字幕与声音的时间对上<br>
+此时如果播放的话可以看到字的播放其实是没有平滑移动的效果的<br>
+右键，将 \K 改为 \KF 即可</p>
+<h1>后期压制</h1>
+<h2>压制参数</h2>
+<p>在 B 站的投稿界面可以看到投稿所需的参数</p>
+<h3>视频码率</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5caf68e5001ad15bfcd0f5d03a6da3f320373251cb24657a40573a385d4d4be8/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f53637265656e73686f745f32303230303133313130353032352e706e67"><img src="https://camo.githubusercontent.com/5caf68e5001ad15bfcd0f5d03a6da3f320373251cb24657a40573a385d4d4be8/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f627265617468696e6573732f627265617468696e6573732e6769746875622e696f2f696d672f53637265656e73686f745f32303230303133313130353032352e706e67" alt="" data-canonical-src="https://cdn.jsdelivr.net/gh/breathiness/breathiness.github.io/img/Screenshot_20200131105025.png" style="max-width: 100%;"></a></p>
+<h2>压制软件</h2>
+<h3>ffmpeg</h3>
+<p>使用我们万能的 ffmpeg，可以快速地进行视频压制的操作<br>
+压制 ass 字幕</p>
+<pre class="notranslate"><code class="notranslate">ffmpeg -i input.mp4 -vcodec libx264 -preset medium -crf 23 -vf "ass=input.ass" output.mp4
+</code></pre>
+<h3>HandBrake</h3>
+<p>如果不想使用命令行，也可以选择 HandBrake 作为压制软件使用</p>
+<h1>后记</h1>
+<p>上面提到的各种工具以及使用方法。都是我通过网上的各种免费文章、视频学习得到的<br>
+这是一个获取知识的成本非常低廉的时代，你可以仅仅凭借网络上的知识熟练、甚至精通某些领域。而你所需要的需要付出的仅仅是去学习的兴趣，以及一些时间<br>
+其实星也 seiya 老师的首播里说的其实是非常准确的<br>
+「将兴趣转变为职业，就是要由消费者转变为生产者」<br>
+即使是看 Vtuber 也可以让我们学到很多的知识<br>
+尤其是现在这段时间，大家都出不了门<br>
+刚好有大量的空闲时间来学习<br>
+最好就别把时间给浪费了</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://breathiness.github.io"> Blog Title </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","breathiness/breathiness.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+
+</html>

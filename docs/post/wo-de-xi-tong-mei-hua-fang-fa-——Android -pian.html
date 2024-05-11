@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="我的系统美化方法——Android 篇">
+<title>我的系统美化方法——Android 篇</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">我的系统美化方法——Android 篇</h1>
+<div class="title-right">
+    <a href="https://breathiness.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/breathiness/breathiness.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>目录</h1>
+
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%A1%8C%E9%9D%A2">桌面</a>
+<ul>
+<li><a href="#nova-launcher">Nova Launcher</a></li>
+<li><a href="#total-launcher">Total Launcher</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%BE%E6%A0%87%E5%8C%85">图标包</a>
+<ul>
+<li><a href="#sorcery-%E5%9B%BE%E6%A0%87">Sorcery 图标</a></li>
+<li><a href="#meeye-%E5%9B%BE%E6%A0%87%E5%8C%85">Meeye 图标包</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A3%81%E7%BA%B8">壁纸</a>
+<ul>
+<li><a href="#%E6%98%9F%E7%A9%BA%E8%A7%86%E9%A2%91%E5%A3%81%E7%BA%B8">星空视频壁纸</a></li>
+<li><a href="#mysplash">Mysplash</a></li>
+<li><a href="#%E5%88%9B%E6%84%8F%E6%B0%A2%E5%A3%81%E7%BA%B8">创意氢壁纸</a></li>
+<li><a href="#klwp-live-wallpaper-maker">KLWP Live Wallpaper Maker</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8C%82%E4%BB%B6">挂件</a>
+<ul>
+<li><a href="#kwgt-kustom-widget">KWGT Kustom Widget</a>
+<ul>
+<li><a href="#kustom-icon-plugin">kustom Icon Plugin</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%9B%BE%E6%A0%87-for-nova">动态图标 for Nova</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%94%81%E5%B1%8F">锁屏</a>
+<ul>
+<li><a href="#klck-kustom-lock-screen-maker">KLCK Kustom Lock Screen Maker</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BB%E9%A2%98">主题</a>
+<ul>
+<li><a href="#substratum-%E4%B8%BB%E9%A2%98%E7%AE%A1%E7%90%86">substratum 主题管理</a></li>
+<li><a href="#android-dark-oreo-8-emui%E4%B8%BB%E9%A2%98">Android Dark Oreo 8 EMUI主题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E4%BD%93">字体</a>
+<ul>
+<li><a href="#fontfix">FontFix</a>
+<ul>
+<li><a href="#ubuntu-font">Ubuntu Font</a></li>
+<li><a href="#%E6%96%B9%E6%AD%A3%E5%85%B0%E4%BA%AD%E7%BA%A4%E9%BB%91">方正兰亭纤黑</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E6%9C%BA%E5%8A%A8%E7%94%BB">开机动画</a>
+<ul>
+<li><a href="#liveboot">LiveBoot</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a>
+<ul>
+<li><a href="#md%E9%85%8D%E8%89%B2%E5%8F%82%E8%80%83">MD配色参考</a></li>
+</ul>
+</li>
+</ul>
+
+<h2>前言</h2>
+<p>对于刚开始学习使用某个系统的新人，美化是非常好的入门途径。相比起其他方面更加简单，并且通过一些简单的工作就能非常容易获得成效，可以让新人快速树立起自信心。当然，对于酷安的各位老司机来说美化也是有必要的，除了让自己看的顺眼，也能够在一定程度上可以提高自己的工作效率。</p>
+<p>除了具体的美化工具，我也会介绍一下我自己的设置，还有一些美化时应该注意的事项。当然我在这里仅仅是推荐，具体的实现还是看各自的口味。顺带一提，我的设置大多是从<strong>实用性</strong>出发。所以颜值方面是有些缺陷的。</p>
+<h2>桌面</h2>
+<p>桌面是美化的最基础部分，不过对我来说桌面的选择其实并不需要太多要求。只要支持挂件、能更换图标包（最好支持单个应用更换）、能用 Shortcuts、有应用抽屉即可。不满足这些要求的桌面我也会保留，但是不会作为日常使用。仅仅是因为有趣偶尔玩玩。比如说Aris终端桌面，逼格极高完全键盘操作，非常有意思。Lens Luncher 将所有应用在一个屏幕内显示，效果非常有趣。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36585021-17804974-18b7-11e8-8fb2-ef9b107f06d4.png"><img src="https://user-images.githubusercontent.com/11361630/36585021-17804974-18b7-11e8-8fb2-ef9b107f06d4.png" alt="screenshot_20180213-161046" style="max-width: 100%;"></a></p>
+<p>并且也可以展示自己所有应用。</p>
+<h3>Nova Launcher</h3>
+<p>新人和大佬都能很愉快使用的桌面，入门简单而且也有很多的折腾空间。也是目前酷安最火的桌面，450万的恐怖下载量跟其他的同类软件完全不是一个数量级。大量的用户所带来的好处也是显而易见的，在软件的评论区有众多大佬发布自己的配置、各种教程，并且大多数相关软件都与 Nova 兼容。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36584547-1b0fbe28-18b5-11e8-985d-b627dc45a544.png"><img src="https://user-images.githubusercontent.com/11361630/36584547-1b0fbe28-18b5-11e8-985d-b627dc45a544.png" alt="screenshot_20180216-152319" style="max-width: 100%;"></a></p>
+<p>我配置的 Nova 自认为是很丑的，不过我针对实用方面进行了很多的设置。</p>
+<ol>
+<li>设置手势</li>
+</ol>
+<blockquote>
+<p>Nova 提供了多种手势，不过我不太推荐设置太多（复杂的手势需要费力去记并且容易误操作）。我仅仅设置了向上滑动打开应用抽屉还有向下滑动展开通知。<br>
+这样我在桌面想进行那两种常用的操作时就无需将手指移动到屏幕的最上方和最下方，只需要在屏幕中部操作。</p>
+</blockquote>
+<ol start="2">
+<li>关闭托盘、搜索栏、滚动指示器</li>
+</ol>
+<blockquote>
+<p>搜索栏的样式和位置都太过死板并且在每一屏都会存在，去除后可自定义一个更个性化的。托盘在打开应用抽屉的手势设置好后托盘对我来说已经没有用处了。而且还会占据小部件的可放置的位置。主屏幕的位置可是相当珍贵的。<br>
+进行这三步操作后就可以得到一块完全干净，可随意配置的主屏幕了。</p>
+</blockquote>
+<ol start="3">
+<li>应用抽屉分类</li>
+</ol>
+<blockquote>
+<p>虽然有一些异端用户会将应用抽屉隐藏，然后打开自动添加快捷方式。假装没有应用抽屉，将所有应用都堆在主屏幕（说的就是你！苹果！），这样会让主屏幕显得比较凌乱。并且缺少一个能集中显示所有应用程序的地方。这对普通用户可能没什么，但是对我这种已经步入养老期也依然有269个应用的人来说没有应用抽屉是一种非常自虐的行为。<br>
+直接使用应用抽屉也是没有问题的，但是进行分类后可以让抽屉更加美观，并且寻找应用也变得更容易。我的习惯是文件夹的数量刚好16个占满抽屉的一页。<br>
+Nova 的应用抽屉其实还不错。可以无限层级地建立文件夹，而且要隐藏某个应用也非常简单。虽然在抽屉只能按拼音排序，但是文件夹数量不会很多影响不大。<br>
+顺带一提，Nova 抽屉的同一个应用是可以放在两个文件夹里的。这样就避免了某个应用不知道放在甲分类还是放在乙分类比较好这种让人纠结的问题。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36584829-557d32b0-18b6-11e8-8c4a-bd96cc83f1ef.png"><img src="https://user-images.githubusercontent.com/11361630/36584829-557d32b0-18b6-11e8-8c4a-bd96cc83f1ef.png" alt="screenshot_20180223162450" style="max-width: 100%;"></a></p>
+<ol start="4">
+<li>主屏幕文件夹</li>
+</ol>
+<blockquote>
+<p>很多人为了方便和美观，会选择放弃在主屏幕使用应用文件夹。因为这样会比较难看。而且想要打开某文件夹内常用的应用，需要先点开文件夹多了一下点击，并且无法使用 Shortcuts。<br>
+但在 Nova 中有鱼与熊掌兼得的选择。将你文件夹中最常用的应用放到文件夹第一个。长按主屏幕的文件夹进入编辑文件夹将“滑动打开文件夹”打开，单击行为为“文件夹中的第一项”。这样就能显示第一项应用，并且点击以及 Shortcuts 都是第一项应用。只要向上滑动就能打开文件夹。</p>
+</blockquote>
+<ol start="5">
+<li>图标滑动行为</li>
+</ol>
+<blockquote>
+<p>Nova 可以为某个图标添加滑动行为。比如说我有原版还有蓝版的哔哩哔哩客户端，一个看平时的内容，一个看港澳台独占的番剧。这两个就可以设置滑动行为，做到点击图标打开蓝版客户端滑动图标打开原版客户端。</p>
+</blockquote>
+<ol start="6">
+<li>锁定桌面</li>
+</ol>
+<blockquote>
+<p>在所有桌面的美化工作完成后。推荐将桌面锁定，这样可以有效防止手贱。尤其是现在支持 Shortcuts 的应用越来越多，很容易误操作将文件夹删除（血的教训）。而且锁定桌面后在应用抽屉里也可以打开应用的 Shortcuts 了。</p>
+</blockquote>
+<h3>Total Launcher</h3>
+<p>对新人极其不友好的强大启动器。入门难度极高，官方的引导太过简略，不看教程基本没办法使用。但是自定义性极强，比 Nova Launcher 高出了一个层次。能做到很多 Nova Launcher 不依靠其他应用根本无法做到的效果。</p>
+<p>在酷安评论区里可以看到很多大佬发布的备份，效果非常棒。比如说仿 Windows10 桌面主题、仿iOS主题、仿 Google 日历主题等。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36595658-fd689f38-18dd-11e8-9e4f-41f1403bc01e.jpg"><img src="https://user-images.githubusercontent.com/11361630/36595658-fd689f38-18dd-11e8-9e4f-41f1403bc01e.jpg" alt="d995e878bb42d5277f592a9203639911" style="max-width: 100%;"></a></p>
+<h2>图标包</h2>
+<p>Android 的很多应用的图标都没有遵循质感设计，会显得比较混乱。使用图标包就是为了避免这种情况，并且可以更加符合整体的风格。</p>
+<p>图标包的选择是非常重要的。我总结了以下几点比较注重实用并且有点主观的意见。首先要与整体风格相符。质感设计的主题搭配的却是iOS的图标就显得有点不伦不类了。其次要看图标包对你常用应用的适配度。国外的一些图标包虽然做的不错，但是却没有适配国内常用的应用，这用了也相当于没用。最后是辨识度。有些图标包做的挺精致，单个看起来都非常好看。但是当应用到整体后效果却非常糟糕，图标间的差别太小导致稍微离远一些就难以分辨。比如说这个预览图标包就是如此。</p>
+<p>还有一点是只针对主要使用的图标包的，就是在桌面设置里应用后不能有对未适配图标的“修改”，比如说加个壳、切个边之类的。因为这样出来的效果往往比较糟糕，最后还要手动换回来。</p>
+<h3>Sorcery 图标</h3>
+<p>酷安目前下载量最高的图标包。质量相当不错，质感设计风格。并没有太明显的“特色”，即使跟未适配的应用放在一起也不会有太多的违和感。并且没有给未适配图标进行修改。对国内应用覆盖率相当不错，尤其是酷安的热门应用。这是我的基础图标包，遇到一些未适配以及效果比较差的图标我会单个更换为其他图标包的图标。并且 Sorcery 图标不仅仅图标好看作为应用本身也非常优秀。除了支持图标包的第三方桌面，还能通过缓存替换方式来支持某些桌面以及用 Xposed 方式全局替换来达到在系统级别上使用图标包。这些在图标包的帮助里有详细的解释。而且在图标包内点开某个图标，右上角的按钮点击后可以看到图标包与原图标的对比，还可以选择前往商店。因为这个功能，我偶尔也会在图标包里翻一翻，能找到一些有趣的应用。</p>
+<h3>Meeye 图标包</h3>
+<p>这是我很喜欢的图标包。风格独特，比起 sorcery 图标相对柔和。图标灵感来自 Nokia MeeGo Harmattan，弱化但保留了原有的质感，可以说是相当情怀了。感觉很适合我这种养老人士。适配率也挺不错。不过风格太过明显，与未适配应用对比强烈。并且有对未适配图标的修改，不适合用作基础图标包。我将这个图标包作为补充包使用，Sorcery 图标未适配的，以及效果不太好的我就会选择改用这个图标包的图标。比如说 Sorcery 的谷歌翻译图标我是觉得有点丑的，然后我就替换成了这个图标包的图标。Nova Launcher 支持单个应用更换图标真是太棒了。</p>
+<h2>壁纸</h2>
+<p>壁纸的选择其实可以随自己喜欢,当然如果从实用性方面出发的话壁纸的选择还是有一些经验可以分享的。</p>
+<p>首先就是之前也提到过的要与整体风格相搭配。然后壁纸的元素可以复杂，但是一定不能“抢镜”，让注意力偏移到奇怪的地方。因为在日常的使用中桌面上的主角永远是图标和挂件，而不是壁纸。最典型的反例就是用桌面放MMD做壁纸的。这样使用时还要避免图标遮挡住关键部位，还不如直接开视频播放器。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36585650-b4e0889e-18b9-11e8-9ff7-19928d616d16.png"><img src="https://user-images.githubusercontent.com/11361630/36585650-b4e0889e-18b9-11e8-9ff7-19928d616d16.png" alt="screenshot_20180216-193556" style="max-width: 100%;"></a></p>
+<p>然后是壁纸的整体颜色最好要与图标的颜色有比较明显的区分。目的同样也是为了突出桌面的主角，反例就是我我桌面上的 Termux，跟壁纸的区分不是很明显。当然除了实用方面还有省电方面，如果你是省电狂魔，那么A屏黑也是很好的选择。</p>
+<h3>星空视频壁纸</h3>
+<p>视频壁纸比起传统的壁纸会显得更加丰富、生动。我目前正在使用的是这一款，酷友制作、质量优秀、非常良心。自带有一个创意工坊，可以找到一些优秀的视频壁纸。并且也支持使用自己的视频。</p>
+<p>我选择的视频壁纸一直都是“线条”。图案的运动相对缓慢，并且色调也没有太明亮，整体来说不会抢眼。我是对这个壁纸是比较满意的。</p>
+<h3>Mysplash</h3>
+<p>一个使用体验非常舒爽的开源 Unsplash 客户端。作为找壁纸的应用，不仅仅图片质量高、数量多。而且应用本身的颜值以及使用体验都相当的棒。并且相比起其他的壁纸软件，比如少数派的 Cuto 多了搜索功能。能快速找到相应主题的壁纸。</p>
+<p>而且 Mysplash 还有一个对找壁纸而言挺不错的小功能。当点进图片详情→点开大图→再次点击图片，就可以显示搜索条和图标的预览。能简单地对图片是否适合作为壁纸使用进行粗略的判断。不过这个功能还有不小的问题，很多大图的分辨率在手机上显示是会有很大的黑边的。还是希望对这个进行一些改进。</p>
+<h3>创意氢壁纸</h3>
+<p>这是一个比较方便的氢壁纸制作工具。虽然现在氢壁纸已经过气了，但我还是挺欣赏这一种壁纸样式的。普通的壁纸我是不太推荐使用人物图片的。因为人物图片的主体非常明确，而且因为构图原因通常位于正中央。作为壁纸的话通常图标就要为了避免遮挡主体而移动到一些奇怪的位置。作为反例的就是我的桌面，图标的位置很奇怪就是为了避开原壁纸的关键部位。而氢壁纸巧妙地将壁纸分成展示壁纸的部分和放置应用的部分。并且也能通过氢壁纸的效果突出图片的主体。还是非常不错的。</p>
+<p>这个氢壁纸应用样式比较多，并且还能够进行自定义。还是挺不错的。</p>
+<h3>KLWP Live Wallpaper Maker</h3>
+<p>之前在介绍 Total Luncher 时提到“能做到很多 Nova Launcher 不依靠其他应用根本无法做到的效果”里面提到的“其他应用”指的就是 KLWP Live Wallpaper Maker。拥有非常强大的自定义功能。并且入门也比较简单，起码少数派有一个不错的<a href="https://sspai.com/post/32684" rel="nofollow">教程</a>。如果自己动手出来的效果实在是不好，也可以使用大佬们制作的成品。这些成品很多都制作成了APK发布了出来。比 Total 的备份安装使用更加方便。</p>
+<h2>挂件</h2>
+<p>挂件在桌面上可以说是除了应用图标外最重要的部分。除了纯粹观赏和展示状态的挂件，比如之前介绍过的GHCWidget之外。很多应用的挂件可以快速到达应用的某个界面或者打开某个功能。比如说 SSR，可以快速开关梯子。还有 Steam 的挂件能方便地看到令牌。ProCoins 无需打开应用快速记账。等千奇百怪的功能。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36585488-09f43cc8-18b9-11e8-94c6-d1dfbec8e928.png"><img src="https://user-images.githubusercontent.com/11361630/36585488-09f43cc8-18b9-11e8-94c6-d1dfbec8e928.png" alt="screenshot_20170508-200224" style="max-width: 100%;"></a></p>
+<p>挂件的选择非常随意，基本上选择自己需要的功能以及颜值高的即可。</p>
+<p>挂件的摆放位置推荐不要在第一屏放置较大面积的挂件。主屏幕作为最重要的位置，最好是给应用图标使用。而放置较大尺寸挂件的位置最好是在左、右一屏的位置。只要一次滑动即可看到。之前挺火的负一屏的概念还不错。将所有挂件类放置在一个屏幕内。不过我试用微软桌面的负一屏后发现体验并不算太好，所以还是放弃了。</p>
+<p>最后提一句屏幕数量的事，我推荐屏幕数量最好保持在三块以下。太多会明显降低使用效率。尤其是不使用应用抽屉的人。</p>
+<h3>KWGT Kustom Widget</h3>
+<p>在前面我提到，主屏幕最好不要放置挂件。但是我的桌面挂件为何比应用图标还多？其实原因就是这个应用。</p>
+<p>KWGT Kustom Widget 与上面提到的 KLWP Live Wallpaper Maker 是同一公司出品。界面和使用方式一脉相承，能非常简单的上手。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36585982-eb91c186-18ba-11e8-8569-871fbb130999.png"><img src="https://user-images.githubusercontent.com/11361630/36585982-eb91c186-18ba-11e8-8569-871fbb130999.png" alt="screenshot_20180222-224321" style="max-width: 100%;"></a></p>
+<p>我在主屏幕中间的挂件都设置成了通向各种常用应用的入口或者快捷方式。并且作为挂件还可以显示一些状态，一举两得。上下两个4x1大小的挂件因为手指很少移动到那些地方所以功能都是设定成了比较不重要的功能。比如上方的点击打开搜索lite以及下方的点击+1s……</p>
+<p>顺便说一下，KWGT、KLWP 都能用 KAPK Kustom Skin Pack Maker 制作成压缩包或APK分享出来，非常方便。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36586209-dcc3dc7e-18bb-11e8-9434-347c3d045b89.png"><img src="https://user-images.githubusercontent.com/11361630/36586209-dcc3dc7e-18bb-11e8-9434-347c3d045b89.png" alt="screenshot_20180214-211409" style="max-width: 100%;"></a></p>
+<h4>kustom Icon Plugin</h4>
+<p>一个 Kustom 系列的辅助应用，能将一些第三方图标包的图标提取出来方便并且直接生成公式可以直接使用。当然仅仅作为方便的第三方图标提取工具也很不错。</p>
+<h4>动态图标 for Nova</h4>
+<p>KWGT 的一个很不错的示例，将一些常用的应用制作成了图标的形式。还是挺有趣的。</p>
+<h2>锁屏</h2>
+<p>锁屏对于我来说是非常没有存在感的，我对密码解锁之类的很讨厌。有了指纹解锁后就更是如此了。我基本只在开机时才能看到一次锁屏界面。虽然听说指纹解锁并不安全。但是我设置指纹解锁完全是为了开屏时少花些时间。说到这里顺便婊一下苹果，虽然很多人不喜欢，但我是觉得后置指纹是比前置指纹要好的（侧置就更好了）。我是对苹果的解锁方式不太感兴趣，iPhone X 的脸部识别解锁还不错，不过在刷脸之后还要动手划一下，这就有点多此一举了……</p>
+<h3>KLCK Kustom Lock Screen Maker</h3>
+<p>这个也是 Kustom 系列的。可以自定义锁屏界面，目前还是测试版。使用方式和界面依然是一脉相承。感兴趣的可以试试。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36586037-27e7f1a0-18bb-11e8-81a3-703efce051e6.png"><img src="https://user-images.githubusercontent.com/11361630/36586037-27e7f1a0-18bb-11e8-81a3-703efce051e6.png" alt="screenshot_20180214-100440" style="max-width: 100%;"></a></p>
+<h2>主题</h2>
+<p>对很多 ROM 来说都会带有主题管理，能够让系统的整体风格有很大的变化。</p>
+<h3>substratum 主题管理</h3>
+<p>一个我没用过但口碑不错的主题管理，有很多第三方主题都是基于这个。不仅仅是系统，还能更改一些应用的界面，还有一些可以让更换字体更方便。不过很遗憾，我的手机装不上，所以就不介绍了……</p>
+<h3>Android Dark Oreo 8 EMUI主题</h3>
+<p>EMUI 虽然无法使用上面那个应用。但是还好还是有人为 EMUI 制作主题的。这个就是个很不错的奥利奥主题。这里顺便婊一下谷歌，Android 8 的 emoji 真的好！丑！啊！</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36586074-47da3e28-18bb-11e8-8a26-8ac55c952d45.png"><img src="https://user-images.githubusercontent.com/11361630/36586074-47da3e28-18bb-11e8-8a26-8ac55c952d45.png" alt="screenshot_20180212194159" style="max-width: 100%;"></a></p>
+<h2>字体</h2>
+<p>手机上的更换第三方字体的方式多种多样。替换系统主题里下载的字体文件、利用 ROOT 替换系统的字体文件、利用 Xposed 修改、使用 substratum 主题管理修改等非常多的方式。但是字体的替换虽然简单，但是可以说这是是最多人在美化时出错的地方了。</p>
+<p>这里说的出错指的并不是更改字体的方式，而是字体的选择。我看很多人要么不换字体，一换选择的字体就很奇形怪状。比如字库不全，尺寸很小、字体上的装饰太多还有使用手写体的。这会给自己的使用增加一些困难。一般来说在手机这种小屏幕还是推荐使用一些比较清晰的字体，最好是无衬线的。不然会让阅读时更加耗费经历，并且并且不好分辨。</p>
+<h3>FontFix</h3>
+<p>原理是利用 ROOT 替换系统的字体文件。我选择这个的原因只是因为可以直接下载 Ubuntu 字体。其他方面也挺不错的，比如在字体预览页面除了可以预览英文和中文字体外还能在右上角切换成其他语言看看的效果。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36586133-7bec049e-18bb-11e8-9401-daad2bb95f2f.png"><img src="https://user-images.githubusercontent.com/11361630/36586133-7bec049e-18bb-11e8-9401-daad2bb95f2f.png" alt="screenshot_20180222-204642" style="max-width: 100%;"></a></p>
+<h4>Ubuntu Font</h4>
+<p>虽然字库非常非常不全，好像只有英语。但我不管！我就是喜欢！我就是要用！</p>
+<h4>方正兰亭纤黑</h4>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36595219-4ab282c4-18dc-11e8-8436-0bad9793be3f.png"><img src="https://user-images.githubusercontent.com/11361630/36595219-4ab282c4-18dc-11e8-8436-0bad9793be3f.png" alt="screenshot_20180223195233" style="max-width: 100%;"></a></p>
+<p>欢乐书客的默认字体，字库还算可以，有部分繁体字不支持。整体比较纤细，在手机这种较小的屏幕上看起来比较舒服。</p>
+<h2>开机动画</h2>
+<p>开机动画也是可以自定义的。开机时蹦出个董小姐不是挺惊喜的吗？#(滑稽)不过现在我已经处于养老期，很少重启了。</p>
+<h3>LiveBoot</h3>
+<p>之前折腾那台红米时使用的开机动画，可以显示开机的信息，可以说是非常装逼了。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/11361630/36595076-c9594d2a-18db-11e8-95cb-02bbcc03d02d.png"><img src="https://user-images.githubusercontent.com/11361630/36595076-c9594d2a-18db-11e8-95cb-02bbcc03d02d.png" alt="31fe1b10b2687eb3723f13560232e7a7" style="max-width: 100%;"></a></p>
+<h2>通知面板</h2>
+<h3>质感通知面板</h3>
+<p>为低版本的 Android 添加奥利奥风格的通知面板，无需 ROOT 之类的东西。很适合我这种养老人士。</p>
+<h2>其他</h2>
+<h3>MD配色参考</h3>
+<p>一些应用是可以进行自定义颜色的，但是如果你没办法调出一些好看的颜色怎么办？这个东西就能帮你了。</p>
+<p>类似的还有这个网站<a href="http://zhongguose.com/" rel="nofollow">中国色-中国传统色</a>以及<a href="http://nipponcolors.com/" rel="nofollow">日本の伝統色</a></p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://breathiness.github.io"> Blog Title </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","breathiness/breathiness.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+
+</html>
