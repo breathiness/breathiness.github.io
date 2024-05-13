@@ -135,7 +135,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>虽然 github.dev 目前还有各种各样的问题。依然比不上桌面端 VScode 的强大功能，但是总体来说还是非常好用的。<br>
 使用方便、无需部署、无需付费、支持编辑文件、支持部分扩展……<br>
 已经有非常充足的理由让人去使用了。</p></div>
-<div style="font-size:small;margin-top:8px;float:right;"></div>
+<div style="font-size:small;margin-top:8px;float:right;">本作品在法律允许的范围内，使用CC0 1.0通用（CC0 1.0）公共领域贡献协议进行共享。</div>
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
 </div>
@@ -145,9 +145,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </p>
 
 <script>
-if(""!=""){
+if("02/22/2018"!=""){
     var now=new Date();
-    var startSite=new Date("");
+    var startSite=new Date("02/22/2018");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("year").innerHTML=now.getFullYear();

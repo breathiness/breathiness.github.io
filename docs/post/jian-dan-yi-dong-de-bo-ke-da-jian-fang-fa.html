@@ -210,7 +210,7 @@ perpage: 10
 <h2>3. 修改、删除</h2>
 <p>只需要将相应的issuse修改，博客的页面也会自动同步。</p>
 <p>要删除文章也很简单，只要将issuse关闭或删除即可</p></div>
-<div style="font-size:small;margin-top:8px;float:right;"></div>
+<div style="font-size:small;margin-top:8px;float:right;">本作品在法律允许的范围内，使用CC0 1.0通用（CC0 1.0）公共领域贡献协议进行共享。</div>
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
 </div>
@@ -220,9 +220,9 @@ perpage: 10
 </p>
 
 <script>
-if(""!=""){
+if("02/22/2018"!=""){
     var now=new Date();
-    var startSite=new Date("");
+    var startSite=new Date("02/22/2018");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("year").innerHTML=now.getFullYear();
