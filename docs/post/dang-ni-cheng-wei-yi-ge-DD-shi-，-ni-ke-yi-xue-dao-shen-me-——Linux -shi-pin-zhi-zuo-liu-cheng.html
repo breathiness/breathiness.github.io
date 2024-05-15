@@ -9,7 +9,94 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="当你成为一个DD时，你可以学到什么——Linux 视频制作流程">
+<meta name="description" content="<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [前言](#前言)
+- [前期准备](#前期准备)
+  - [视频下载](#视频下载)
+    - [直播源](#直播源)
+      - [ffmpeg](#ffmpeg)
+      - [OBS](#obs)
+    - [视频源](#视频源)
+      - [YouTube-dl (Linux)](#youtube-dl-linux)
+      - [缓存视频合并 (Android)](#缓存视频合并-android)
+  - [素材制作](#素材制作)
+    - [相关知识收集](#相关知识收集)
+      - [歌曲信息](#歌曲信息)
+      - [歌词注释](#歌词注释)
+    - [封面图片处理](#封面图片处理)
+      - [B 站封面下载](#b-站封面下载)
+      - [GIMP 使用](#gimp-使用)
+- [视频制作](#视频制作)
+  - [简单剪辑](#简单剪辑)
+    - [ffmpeg](#ffmpeg-1)
+    - [Olive](#olive)
+  - [字幕制作](#字幕制作)
+    - [Aegisub](#aegisub)
+- [后期压制](#后期压制)
+  - [压制参数](#压制参数)
+    - [视频码率](#视频码率)
+  - [压制软件](#压制软件)
+    - [ffmpeg](#ffmpeg-2)
+    - [HandBrake](#handbrake)
+- [后记](#后记)
+
+<!-- /code_chunk_output -->
+
+# 前言
+最近我在 DD 时听到了一首我非常喜欢的歌 
+【waku 麻吉】第二期--《惑姬的酒馆》
+http://www.bilibili.com/video/av78489736
+这期节目的中间惑姬 Waku 翻唱的一首《Bartender Angel》 
+一听就爱上了。">
+<meta property="og:title" content="当你成为一个DD时，你可以学到什么——Linux 视频制作流程">
+<meta property="og:description" content="<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [前言](#前言)
+- [前期准备](#前期准备)
+  - [视频下载](#视频下载)
+    - [直播源](#直播源)
+      - [ffmpeg](#ffmpeg)
+      - [OBS](#obs)
+    - [视频源](#视频源)
+      - [YouTube-dl (Linux)](#youtube-dl-linux)
+      - [缓存视频合并 (Android)](#缓存视频合并-android)
+  - [素材制作](#素材制作)
+    - [相关知识收集](#相关知识收集)
+      - [歌曲信息](#歌曲信息)
+      - [歌词注释](#歌词注释)
+    - [封面图片处理](#封面图片处理)
+      - [B 站封面下载](#b-站封面下载)
+      - [GIMP 使用](#gimp-使用)
+- [视频制作](#视频制作)
+  - [简单剪辑](#简单剪辑)
+    - [ffmpeg](#ffmpeg-1)
+    - [Olive](#olive)
+  - [字幕制作](#字幕制作)
+    - [Aegisub](#aegisub)
+- [后期压制](#后期压制)
+  - [压制参数](#压制参数)
+    - [视频码率](#视频码率)
+  - [压制软件](#压制软件)
+    - [ffmpeg](#ffmpeg-2)
+    - [HandBrake](#handbrake)
+- [后记](#后记)
+
+<!-- /code_chunk_output -->
+
+# 前言
+最近我在 DD 时听到了一首我非常喜欢的歌 
+【waku 麻吉】第二期--《惑姬的酒馆》
+http://www.bilibili.com/video/av78489736
+这期节目的中间惑姬 Waku 翻唱的一首《Bartender Angel》 
+一听就爱上了。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://breathiness.github.io/post/dang-ni-cheng-wei-yi-ge-DD-shi-%EF%BC%8C-ni-ke-yi-xue-dao-shen-me-%E2%80%94%E2%80%94Linux%20-shi-pin-zhi-zuo-liu-cheng.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
 <title>当你成为一个DD时，你可以学到什么——Linux 视频制作流程</title>
 
 
