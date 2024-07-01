@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -170,8 +170,10 @@ mirror 相比起传统的方式接触代码和命令行的数量大大减少了�
 <p>其他的博客框架可能有着更高的颜值、更好的自定义、更丰富的功能。但我依然推荐大部分人使用 Gmeek。作为断断续续写了几篇文章的人，就我自己的体验来说，一个足够简单的发布方式是可以切实提高写作欲望的。众所周知，博客的写作其实并没有一个强制性。这种情况下，任何写作路上的小小障碍都有可能让人简单的放弃。比如只有手机端的酷安、不支持 markdown 的 B 站文章、编辑器莫名其妙 BUG 的少数派……一旦遇到了问题其实很容易出现半途而废的情况。<br>
 我笔记软件里的各种半成品长文估计也有十几篇了。最近长文接近年更的原因也是如此。很多时候一些原本打算写篇长文的话题，到最后总是变成一个动态简单分享一下就完了。而 Gmeek 很好的解决了这个问题。只要你的当前设备能连接到 GitHub，文章的编辑和上传就没有什么障碍。可以说是个能避免因为网站原因，而放弃发布文章的好博客框架。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">本作品在法律允许的范围内，使用CC0 1.0通用（CC0 1.0）公共领域贡献协议进行共享。</div>
+
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
+
 </div>
     <div id="footer">Copyright © <span id="year"></span><a href="https://breathiness.github.io"> Breathiness 的个人博客 </a>
 <p>
@@ -226,6 +228,8 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5p
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
 
 function openComments(){
     cm=document.getElementById("comments");
