@@ -390,7 +390,7 @@ La La La Do Bi Do Bi Do......</p>
 <h3>ffmpeg</h3>
 <p>这里使用到的，依然万能的 ffmpeg<br>
 首先使用 ffplay 播放</p>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th align="center">按钮</th>
@@ -435,7 +435,7 @@ La La La Do Bi Do Bi Do......</p>
 <td align="center">跳转到鼠标点击的位置（根据鼠标在显示窗口点击的位置计算百分比）</td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <p>找到需要剪辑的时间点，使用 ffmpeg 将片段剪辑出来</p>
 <pre class="notranslate"><code class="notranslate">ffmpeg -ss 01:08:43 -to 01:12:00 -accurate_seek -i input.mp4 -codec copy -avoid_negative_ts 1 output.mp4
 </code></pre>
